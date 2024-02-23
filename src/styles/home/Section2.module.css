@@ -1,0 +1,284 @@
+.img {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 1rem;
+}
+@media only screen and (max-width: 500px) {
+.info {
+  flex-direction: column !important;
+}
+
+.infoCard {
+  padding: 0rem !important;
+  margin: .5rem !important;
+}
+.infoCard h4 {
+  font-size: 3rem !important;
+}
+
+.infoCard h5 {
+  font-size: 1rem !important;
+}
+}
+.infoCard h4 {
+  font-family: "Anta";
+  font-size: 4vw;
+  font-weight: bolder;
+}
+
+.infoCard h5 {
+  font-family: "Montserrat";
+  font-size: 2vw;
+  font-weight: 300;
+}
+
+.card {
+  width: 85vw;
+  height: 85vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.card h1 {
+  font-family: "Anta";
+}
+
+.card p {
+  font-family: "Montserrat";
+}
+
+.btnGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
+.btn {
+  text-decoration: none;
+  color: #fff;
+  background: #407677;
+  margin-right: 2.5vw;
+  margin-top: 2vh;
+  padding: 1.5vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-family: "Montserrat";
+  font-weight: bolder;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0px 0px 134px 40px rgba(64, 118, 119, 0.9);
+  -moz-box-shadow: 0px 0px 134px 40px rgba(64, 118, 119, 0.9);
+  box-shadow: 0px 0px 134px 40px rgba(64, 118, 119, 0.9);
+}
+@media only screen and (max-width: 600px) {
+  .card h1 {
+    font-family: "Anta";
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .card h1 {
+    font-family: "Anta";
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .card h1 {
+    font-family: "Anta";
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1000px) {
+  .card h1 {
+    font-size: 3rem;
+  }
+
+  .card p {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 5vh;
+  }
+}
+
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+  font-family: "Montserrat";
+}
+.progressBar li {
+  flex: 2;
+  position: relative;
+  padding: 0 0 14px 0;
+  font-size: var(--font-size-default);
+  line-height: 1.5;
+  color: var(--color-green);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 0;
+  text-align: center;
+  border-bottom: 2px solid var(--color-gray-disabled);
+}
+.progressBar li:first-child,
+.progressBar li:last-child {
+  flex: 1;
+}
+.progressBar li:last-child {
+  text-align: right;
+}
+.progressBar li:before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-gray-disabled);
+  borderradius: 50%;
+  border: 2px solid var(--color-white);
+  position: absolute;
+  left: calc(50% - 6px);
+  bottom: -7px;
+  z-index: 3;
+  transition: all 0.2s ease-in-out;
+}
+.progressBar li:first-child:before {
+  left: 0;
+}
+.progressBar li:last-child:before {
+  right: 0;
+  left: auto;
+}
+.progressBar span {
+  transition: opacity 0.3s ease-in-out;
+}
+.progressBar li:not(.isactive) span {
+  opacity: 0;
+}
+.progressBar .iscomplete:not(:first-child):after,
+.progressBar .isactive:not(:first-child):after {
+  content: "";
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: -2px;
+  left: -50%;
+  z-index: 2;
+  border-bottom: 2px solid var(--color-green);
+}
+.progressBar li:last-child span {
+  width: 200%;
+  display: inline-block;
+  position: absolute;
+  left: -100%;
+}
+
+.progressBar .iscomplete:last-child:after,
+.progressBar .isactive:last-child:after {
+  width: 200%;
+  left: -100%;
+}
+
+.progressBar .iscomplete:before {
+  background-color: var(--color-green);
+}
+
+.progressBar .isactive:before,
+.progressBar li:hover:before,
+.progressBar .ishovered:before {
+  background-color: var(--color-white);
+  border-color: var(--color-green);
+}
+.progressBar li:hover:before,
+.progressBar .ishovered:before {
+  transform: scale(1.33);
+}
+
+.progressBar li:hover span,
+.progressBar li.ishovered span {
+  opacity: 1;
+}
+
+.progressBar:hover li:not(:hover) span {
+  opacity: 0;
+}
+
+.xRay .progressBar,
+.xRay .progressBar li {
+  border: 1px dashed red;
+}
+
+.progressBar .hasChanges {
+  opacity: 1 !important;
+}
+.progressBar .hasChanges:before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  left: calc(50% - 4px);
+  bottom: -20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20fill%3D%22%23ed1c24%22%20d%3D%22M4%200l4%208H0z%22%2F%3E%3C%2Fsvg%3E");
+}

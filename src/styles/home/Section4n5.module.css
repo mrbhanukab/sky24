@@ -1,0 +1,109 @@
+.img {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: #407677;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 1rem;
+  width: 85vw;
+  height: 85vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.card h1 {
+  font-family: "Anta";
+}
+
+.card p {
+  font-family: "Montserrat";
+  font-size: 1rem;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.social a {
+  margin-right: 3vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .card h1 {
+    font-family: "Anta";
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .card h1 {
+    font-family: "Anta";
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .card h1 {
+    font-family: "Anta";
+    font-size: 2rem;
+  }
+
+  .card p {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1000px) {
+  .card h1 {
+    font-size: 3rem;
+  }
+
+  .card p {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 5vh;
+  }
+  .img {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+}
