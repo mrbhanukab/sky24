@@ -18,12 +18,6 @@ export default function Home() {
         <Section1 />
         <Section2 />
         <Section4n5 />
-        <footer>
-          <a href="https://mrbhanukab.github.io" target="_blank">
-            Site Developed by @mrbhanuka
-          </a>{" "}
-          &nbsp;
-        </footer>
       </main>
     </>
   );

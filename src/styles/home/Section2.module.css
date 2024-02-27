@@ -10,6 +10,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: var(--black);
 }
 
 .info {
@@ -88,8 +89,8 @@
 
 .btn {
   text-decoration: none;
-  color: #fff;
-  background: #407677;
+  color: var(--white);
+  background: var(--black);
   margin-right: 2.5vw;
   margin-top: 2vh;
   padding: 1.5vh;
@@ -102,9 +103,9 @@
 }
 
 .btn:hover {
-  -webkit-box-shadow: 0px 0px 134px 40px rgba(64, 118, 119, 0.9);
-  -moz-box-shadow: 0px 0px 134px 40px rgba(64, 118, 119, 0.9);
-  box-shadow: 0px 0px 134px 40px rgba(64, 118, 119, 0.9);
+  -webkit-box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
+  -moz-box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
+  box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
 }
 @media only screen and (max-width: 600px) {
   .card h1 {

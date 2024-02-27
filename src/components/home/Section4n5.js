@@ -15,8 +15,8 @@ export default function Section4n5() {
         <div className={styles.social}>
           <a href="https://www.facebook.com/isipathana.astro" target="_blank">
             <Image
-            className={styles.img}
-              src="/sicons/facebook.png"
+              className={styles.img}
+              src="/assets/sicons/facebook.png"
               width={1000}
               height={1000}
               loading="lazy"
@@ -25,8 +25,8 @@ export default function Section4n5() {
           </a>
           <a href="https://www.instagram.com/isipathana.astro" target="_blank">
             <Image
-            className={styles.img}
-              src="/sicons/instgram.png"
+              className={styles.img}
+              src="/assets/sicons/instgram.png"
               width={1000}
               height={1000}
               loading="lazy"
@@ -35,8 +35,8 @@ export default function Section4n5() {
           </a>
           <a href="https://www.youtube.com/@isipathana-astro" target="_blank">
             <Image
-            className={styles.img}
-              src="/sicons/youtube.png"
+              className={styles.img}
+              src="/assets/sicons/youtube.png"
               width={1000}
               height={1000}
               loading="lazy"

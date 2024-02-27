@@ -48,6 +48,7 @@ export default function Step1(props) {
         name="schoolAddress"
         value={formData.schoolAddress}
         onChange={handleInputChange}
+        required
       />
       <input
         type="email"
@@ -71,6 +72,7 @@ export default function Step1(props) {
         required
         placeholder="Contact Number of T.I.C."
         autoComplete="tel"
+        pattern="0[0-9]{9}"
         name="ticContactNumber"
         value={formData.ticContactNumber}
         onChange={handleInputChange}
@@ -88,6 +90,7 @@ export default function Step1(props) {
         required
         placeholder="Contact Number of President"
         autoComplete="tel"
+        pattern="0[0-9]{9}"
         name="presidentContactNumber"
         value={formData.presidentContactNumber}
         onChange={handleInputChange}

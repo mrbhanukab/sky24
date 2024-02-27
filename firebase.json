@@ -9,6 +9,18 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
+        "source": "/register",
+        "destination": "/register.html"
+      },
+      {
+        "source": "/firstRound",
+        "destination": "/firstRound"
+      },
+      {
+        "source": "/finalRound",
+        "destination": "/finalRound"
+      },
+      {
         "source": "/**",
         "destination": "/index.html"
       }

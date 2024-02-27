@@ -24,8 +24,6 @@ export default function Home() {
           name="description"
           content="Sky24, A Quiz Competition Hosted by ICAS"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.mainContainer}>
         <h1>REGISTRATION FORM</h1>

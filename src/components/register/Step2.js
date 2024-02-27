@@ -37,7 +37,7 @@ export default function Step2(props) {
   return (
     <form onSubmit={handleSubmit} className={styles.Step1}>
       <h2>2. Team info</h2>
-      <select value={selectedTeam} onChange={handleTeamSelect}>
+      <select value={selectedTeam} onChange={handleTeamSelect} required>
         <option value="">Select a Team</option>
         <option value="A">Team A</option>
         <option value="B">Team B</option>
@@ -57,6 +57,7 @@ export default function Step2(props) {
             type="tel"
             required
             placeholder="Whatsapp Number"
+            pattern="0[0-9]{9}"
             autoComplete="tel"
             value={member.whatsappNumber}
             onChange={(e) =>

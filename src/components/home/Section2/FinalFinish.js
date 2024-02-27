@@ -13,7 +13,7 @@ export default function FinalFinish() {
         prepare for a celestial showdown like no other!
       </p>
       <div className={styles.btnGroup}>
-        <Link className={styles.btn} href="/firstRound">
+        <Link className={styles.btn} href="/finalRound">
           Final Round Results
         </Link>
       </div>
