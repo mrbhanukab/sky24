@@ -10,7 +10,7 @@
 }
 
 .p li {
-  list-style-type: none ;
+  list-style-type: none;
 }
 
 .Step1 p {
@@ -127,6 +127,11 @@
   background-color: var(--white);
   color: var(--black);
   font-family: "Montserrat";
+}
+
+.notep {
+  font-size: 0.8em !important;
+  margin-inline: 2em;
 }
 
 .Step1 h2 {

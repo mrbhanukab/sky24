@@ -11,6 +11,7 @@ export default function Step1(props) {
     ticContactNumber: "",
     presidentName: "",
     presidentContactNumber: "",
+    language: "s", // Default value for language select
   });
 
   const handleSubmit = (event) => {
@@ -21,8 +22,17 @@ export default function Step1(props) {
     props.func(2);
   };
 
-  // Function to update form data
+  // Function to update form data for text inputs
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Function to update form data for select input
+  const handleSelectChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -95,6 +105,21 @@ export default function Step1(props) {
         value={formData.presidentContactNumber}
         onChange={handleInputChange}
       />
+      <select
+        name="language" // Specify the name attribute for the select element
+        value={formData.language} // Set the value to control the select element
+        onChange={handleSelectChange} // Handle the change event
+        required
+      >
+        <option value="s">Sinhala</option>
+        <option value="e">English</option>
+        <option value="t">Tamil</option>
+        <option value="m">Multilingual</option>
+      </select>
+      <p className={styles.notep}>
+        *If your teammates are competing in different languages use the
+        "Multilingual" option and you must inform us personally.
+      </p>
       <button type="submit">Step 2</button>
     </form>
   );

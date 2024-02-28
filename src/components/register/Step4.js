@@ -74,6 +74,9 @@ const Step4 = (props) => {
         case "presidentContactNumber":
           setFormData({ ...formData, presidentContactNumber: value });
           break;
+        case "language":
+          setFormData({ ...formData, language: value });
+          break;
         case "selectedTeam":
           setSelectedTeam(value);
           break;
@@ -98,7 +101,6 @@ const Step4 = (props) => {
             <input
               type="text"
               name="schoolName"
-              autoFocus
               value={formData.schoolName}
               onChange={handleInputChange}
             />
@@ -108,7 +110,6 @@ const Step4 = (props) => {
             <input
               type="text"
               name="societyEmail"
-              autoFocus
               value={formData.societyEmail}
               onChange={handleInputChange}
             />
@@ -118,7 +119,6 @@ const Step4 = (props) => {
             <input
               type="text"
               name="teacherInCharge"
-              autoFocus
               value={formData.teacherInCharge}
               onChange={handleInputChange}
             />
@@ -129,7 +129,6 @@ const Step4 = (props) => {
               type="text"
               pattern="0[0-9]{9}"
               name="ticContactNumber"
-              autoFocus
               value={formData.ticContactNumber}
               onChange={handleInputChange}
             />
@@ -139,7 +138,6 @@ const Step4 = (props) => {
             <input
               type="text"
               name="presidentName"
-              autoFocus
               value={formData.presidentName}
               onChange={handleInputChange}
             />
@@ -150,8 +148,17 @@ const Step4 = (props) => {
               type="text"
               name="presidentContactNumber"
               pattern="0[0-9]{9}"
-              autoFocus
               value={formData.presidentContactNumber}
+              onChange={handleInputChange}
+            />
+          </p>
+          <p className={styles.p}>
+            Language:
+            <p>Should be one from e, s, t or m</p>
+            <input
+              type="text"
+              name="language"
+              value={formData.language}
               onChange={handleInputChange}
             />
           </p>
@@ -164,7 +171,6 @@ const Step4 = (props) => {
             <input
               type="text"
               name="selectedTeam"
-              autoFocus
               value={selectedTeam}
               onChange={handleInputChange}
             />
@@ -176,7 +182,6 @@ const Step4 = (props) => {
                 <input
                   type="text"
                   name="name"
-                  autoFocus
                   value={member.name}
                   onChange={(e) => handleInputChange(e, index)}
                 />
@@ -184,7 +189,6 @@ const Step4 = (props) => {
                   type="text"
                   name="whatsappNumber"
                   pattern="0[0-9]{9}"
-                  autoFocus
                   value={member.whatsappNumber}
                   onChange={(e) => handleInputChange(e, index)}
                 />
@@ -199,7 +203,6 @@ const Step4 = (props) => {
             <input
               type="text"
               name="selectedCenter"
-              autoFocus
               value={selectedCenter}
               onChange={handleInputChange}
             />

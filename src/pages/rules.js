@@ -28,11 +28,10 @@ export default function Home() {
     fetch(markdownFile)
       .then((response) => response.text())
       .then((text) => {
-        console.log(text); // Log the fetched text to the console
         setMarkdownContent(text);
       })
       .catch((error) => {
-        console.error("Error fetching Markdown content:", error);
+        alert("Error fetching Markdown content");
       });
   }, [language]);
 
