@@ -48,14 +48,12 @@ export default function Step2(props) {
           <input
             type="text"
             autoFocus
-            required
             placeholder={`${index + 1}st Member Name`}
             value={member.name}
             onChange={(e) => handleMemberChange(index, "name", e.target.value)}
           />
           <input
             type="tel"
-            required
             placeholder="Whatsapp Number"
             pattern="0[0-9]{9}"
             autoComplete="tel"

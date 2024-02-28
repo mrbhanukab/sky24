@@ -32,14 +32,6 @@ export default function Section1() {
         alt="Sky Logo.png"
       />
       <p className={styles.text}>Scroll Down ↓</p>
-      {/* <Image
-        className={styles.bgTop}
-        src="/assets/Bg-Top.png  "
-        width={4000}
-        height={4000}
-        loading="lazy"
-        alt="Bg-Top.png"
-      /> */}
     </section>
   );
 }

@@ -13,6 +13,10 @@
         "destination": "/register.html"
       },
       {
+        "source": "/rules",
+        "destination": "/rules.html"
+      },
+      {
         "source": "/firstRound",
         "destination": "/firstRound"
       },

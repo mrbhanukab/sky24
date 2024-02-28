@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
+import { useEffect } from "react";
 const mollen = localFont({
   src: [
     {
@@ -20,6 +21,15 @@ const mollen = localFont({
   ],
 });
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    const handleContextmenu = (e) => {
+      e.preventDefault();
+    };
+    document.addEventListener("contextmenu", handleContextmenu);
+    return function cleanup() {
+      document.removeEventListener("contextmenu", handleContextmenu);
+    };
+  }, []);
   return (
     <>
       <main className={mollen.className}>
