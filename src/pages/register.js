@@ -59,7 +59,7 @@ export default function Home() {
             If you accidentally submitted incorrect details when filling out the
             form for the database, please &nbsp;
             <a
-              href="https:wa.me/94706162457"
+              href="https://wa.me/94706162457"
               target="_blank"
               rel="noopener noreferrer"
             >

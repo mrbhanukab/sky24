@@ -218,7 +218,7 @@ const Step4 = () => {
             <ul>
               <li>
                 <a
-                  href="https:wa.me/94706162457"
+                  href="https://wa.me/94706162457"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -227,7 +227,7 @@ const Step4 = () => {
               </li>
               <li>
                 <a
-                  href="https:wa.me/94703886215"
+                  href="https://wa.me/94703886215"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -236,7 +236,7 @@ const Step4 = () => {
               </li>
               <li>
                 <a
-                  href="https:wa.me/94767733492"
+                  href="https://wa.me/94767733492"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
