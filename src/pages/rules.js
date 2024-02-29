@@ -17,7 +17,7 @@ const LanguageButtons = ({ handleLanguageChange }) => (
   </div>
 );
 
-export default function Home() {
+export default function Rules() {
   const [language, setLanguage] = useState(1);
   const [markdownContent, setMarkdownContent] = useState("");
 

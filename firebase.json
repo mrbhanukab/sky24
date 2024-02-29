@@ -18,11 +18,11 @@
       },
       {
         "source": "/firstRound",
-        "destination": "/firstRound"
+        "destination": "/firstRound.html"
       },
       {
         "source": "/finalRound",
-        "destination": "/finalRound"
+        "destination": "/finalRound.html"
       },
       {
         "source": "/**",

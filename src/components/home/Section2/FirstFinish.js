@@ -5,30 +5,30 @@ import { db } from "@/components/firebase";
 import Link from "next/link";
 
 export default function First() {
-  const [schools, setSchools] = useState(0);
-  const [teams, setTeams] = useState(0);
-  const [participants, setParticipants] = useState(0);
+  // const [schools, setSchools] = useState(0);
+  // const [teams, setTeams] = useState(0);
+  // const [participants, setParticipants] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const docRef = doc(db, "system", "first");
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setSchools(data.participants || 0);
-          setTeams(data.school || 0);
-          setParticipants(data.teams || 0);
-        } else {
-          console.log("No such document!");
-        }
-      } catch (error) {
-        console.error("Error getting document:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const docRef = doc(db, "system", "first");
+  //       const docSnap = await getDoc(docRef);
+  //       if (docSnap.exists()) {
+  //         const data = docSnap.data();
+  //         setSchools(data.participants || 0);
+  //         setTeams(data.school || 0);
+  //         setParticipants(data.teams || 0);
+  //       } else {
+  //         console.log("No such document!");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error getting document:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <>
@@ -42,7 +42,12 @@ export default function First() {
         acumen awaits. May the stars align in your favor as you embark on this
         thrilling voyage toward celestial triumph!
       </p>
-      <div className={styles.info}>
+      <div className={styles.btnGroup}>
+        <Link className={styles.btn} href="/firstRound">
+          First Round Results
+        </Link>
+      </div>
+      {/* <div className={styles.info}>
         <div className={styles.infoCard}>
           <h4>{schools} +</h4>
           <h5>schools</h5>
@@ -55,12 +60,7 @@ export default function First() {
           <h4>{participants} +</h4>
           <h5>participants</h5>
         </div>
-      </div>
-      <div className={styles.btnGroup}>
-        <Link className={styles.btn} href="/firstRound">
-          First Round Results
-        </Link>
-      </div>
+      </div> */}
     </>
   );
 }

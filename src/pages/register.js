@@ -8,7 +8,7 @@ const Step2 = dynamic(() => import("@/components/register/Step2"));
 const Step3 = dynamic(() => import("@/components/register/Step3"));
 const Step4 = dynamic(() => import("@/components/register/Step4"));
 
-export default function Home() {
+export default function Register() {
   const [status, setStatus] = useState(1);
 
   const pull_data = (data) => {
