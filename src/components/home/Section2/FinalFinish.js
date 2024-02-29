@@ -30,14 +30,17 @@ export default function Final() {
 
   return (
     <>
-      <h1>Final Round ...</h1>
+      <h1>FINAL ROUND RESULT ...</h1>
       <p>
-        Calling all cosmic voyagers! The gates to our celestial quiz are about
-        to open, but only for the most intrepid space explorers. While you wait
-        for your chance to join this exclusive event, use this time to chart
-        your course through the cosmos. Remember, knowledge is power, and the
-        competition will be fierce. So, gather your stardust, spacefarers, and
-        prepare for a celestial showdown like no other!
+        To all cosmic adventurers, our journey among the stars has drawn to a
+        close, culminating in the announcement of our celestial champions. With
+        hearts full of cosmic wonder, we applaud the stellar efforts of all
+        participants who made this event an unforgettable cosmic spectacle.
+        Congratulations to our victors, whose names shall be etched among the
+        stars as beacons of cosmic excellence. As we bid farewell to this
+        extraordinary voyage, let us cherish the memories forged and carry the
+        spirit of cosmic exploration in our hearts until we meet again among the
+        stars!
       </p>
       <div className={styles.info}>
         <div className={styles.infoCard}>
@@ -52,7 +55,7 @@ export default function Final() {
           <h5>teams</h5>
         </div>
       </div>
-            <div className={styles.btnGroup}>
+      <div className={styles.btnGroup}>
         <Link className={styles.btn} href="/finalRound">
           Final Round Results
         </Link>

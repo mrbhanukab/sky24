@@ -31,14 +31,15 @@ export default function First() {
 
   return (
     <>
-      <h1>First Round ...</h1>
+      <h1>FIRST ROUND STARTED ...</h1>
       <p>
-        Calling all cosmic voyagers! The gates to our celestial quiz are about
-        to open, but only for the most intrepid space explorers. While you wait
-        for your chance to join this exclusive event, use this time to chart
-        your course through the cosmos. Remember, knowledge is power, and the
-        competition will be fierce. So, gather your stardust, spacefarers, and
-        prepare for a celestial showdown like no other!
+        Attention, celestial adventurers! The journey through our cosmic
+        challenge has officially begun with the commencement of the first round.
+        As our brave spacefarers navigate the celestial terrain, the atmosphere
+        crackles with anticipation and excitement. Every question posed is a
+        stepping stone toward cosmic glory, and every answer brings us closer to
+        uncovering the brightest minds among the stars. So, focus your cosmic
+        energies, participants, and forge ahead with determination!
       </p>
       <div className={styles.info}>
         <div className={styles.infoCard}>

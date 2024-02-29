@@ -29,14 +29,15 @@ export default function Final() {
 
   return (
     <>
-      <h1>Final Round ...</h1>
+      <h1>FINAL ROUND STARTED ...</h1>
       <p>
-        Calling all cosmic voyagers! The gates to our celestial quiz are about
-        to open, but only for the most intrepid space explorers. While you wait
-        for your chance to join this exclusive event, use this time to chart
-        your course through the cosmos. Remember, knowledge is power, and the
-        competition will be fierce. So, gather your stardust, spacefarers, and
-        prepare for a celestial showdown like no other!
+        Attention, cosmic champions! The culmination of our cosmic odyssey is
+        upon us with the commencement of the final round. In this climactic
+        stage of our celestial showdown, the brightest stars among us vie for
+        supremacy, each step bringing us closer to crowning our ultimate cosmic
+        victors. The stakes are high, the tension palpable, as our intrepid
+        finalists navigate the cosmic labyrinth in pursuit of glory. So, summon
+        your cosmic resolve, finalists, and let the celestial battle begin!
       </p>
       <div className={styles.info}>
         <div className={styles.infoCard}>

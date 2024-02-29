@@ -6,12 +6,13 @@ export default function Close() {
     <>
       <h1>REGISTRATION CLOSE ...</h1>
       <p>
-        Calling all cosmic voyagers! The gates to our celestial quiz are about
-        to open, but only for the most intrepid space explorers. While you wait
-        for your chance to join this exclusive event, use this time to chart
-        your course through the cosmos. Remember, knowledge is power, and the
-        competition will be fierce. So, gather your stardust, spacefarers, and
-        prepare for a celestial showdown like no other!
+        To all cosmic contenders, heed this announcement! The gateway to our
+        celestial challenge is now sealed, marking the commencement of the
+        inaugural round. As the cosmic curtain rises, it's time for our intrepid
+        explorers to showcase their cosmic prowess. Remember, the competition is
+        fierce, and only the most astute will advance to the next phase. So,
+        gather your cosmic courage, adventurers, and prepare to embark on this
+        thrilling expedition through the cosmos!
       </p>
       <div className={styles.btnGroup}>
         <Link className={styles.btn} href="/rules">
