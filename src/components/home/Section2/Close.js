@@ -12,7 +12,7 @@ export default function Close() {
         explorers to showcase their cosmic prowess. Remember, the competition is
         fierce, and only the most astute will advance to the next phase. So,
         gather your cosmic courage, adventurers, and prepare to embark on this
-        thrilling expedition through the cosmos!
+        thrilling expedition through the cosmos! 
       </p>
       <div className={styles.btnGroup}>
         <Link className={styles.btn} href="/rules">
