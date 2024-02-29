@@ -17,6 +17,18 @@
   margin-top: 0.5em;
 }
 
+.note{
+  font-size: .5em;
+  font-weight: 200;
+  vertical-align: super;
+}
+
+.note1{
+  font-size: .7em;
+  font-weight: 300;
+  vertical-align: super;
+}
+
 .mainContainer {
   background: var(--black);
   color: var(--white);
@@ -83,6 +95,25 @@
   color: var(--black) !important;
 }
 
+.footnote {
+  padding: 2rem;
+  border-radius: 1rem;
+  color: var(--black);
+}
+
+.footnote h2 {
+font-size: 1em;
+}
+
+.footnote ol {
+  margin: 1rem;
+font-size: .8em;
+}
+
+.footnote a {
+  color: var(--black);
+}
+
 .already {
   background: #bc4749 !important;
   padding: 2rem;
@@ -134,11 +165,6 @@
   background-color: var(--white);
   color: var(--black);
   font-family: "Montserrat";
-}
-
-.notep {
-  font-size: 0.8em !important;
-  margin-inline: 2em;
 }
 
 .Step1 h2 {

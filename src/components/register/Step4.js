@@ -155,7 +155,7 @@ const Step4 = () => {
           </p>
           <p className={styles.p}>
             Language:
-            <p>Should be one from e, s, t or m</p>
+            <span className={styles.note1}>*[3]</span>
             <input
               type="text"
               name="language"
@@ -167,8 +167,7 @@ const Step4 = () => {
         <div className={styles.card}>
           <h3>Team Info</h3>
           <p className={styles.p}>
-            Selected Team:
-            <p>Should be one from A, B or C</p>
+            Selected Team: <span className={styles.note1}>*[4]</span>
             <input
               type="text"
               name="selectedTeam"
@@ -199,8 +198,8 @@ const Step4 = () => {
         </div>
         <div className={styles.card}>
           <h3>Exam Center</h3>
-          <p>Should be one from Colombo, Matara, Kandy or Anuradhapura</p>
           <p className={styles.p}>
+            <span className={styles.note1}>*[5]</span>
             <input
               type="text"
               name="selectedCenter"
@@ -218,13 +217,31 @@ const Step4 = () => {
             wrong, correct and resubmit. Otherwise, contact us via WhatsApp.
             <ul>
               <li>
-                <a href="https:wa.me/94706162457">Ginura (President)</a>
+                <a
+                  href="https:wa.me/94706162457"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ginura (President)
+                </a>
               </li>
               <li>
-                <a href="https:wa.me/94703886215">Movindu (Past-President)</a>
+                <a
+                  href="https:wa.me/94703886215"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Movindu (Past-President)
+                </a>
               </li>
               <li>
-                <a href="https:wa.me/94767733492">Developer</a>
+                <a
+                  href="https:wa.me/94767733492"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Developer
+                </a>
               </li>
             </ul>
           </p>
@@ -239,7 +256,9 @@ const Step4 = () => {
           </p>
         </div>
       ) : (
-        <button type="submit">Submit</button>
+        <button type="submit">
+          Submit <span className={styles.note}>*[3]</span>
+        </button>
       )}
     </form>
   );

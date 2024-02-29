@@ -80,7 +80,9 @@ export default function Step3(props) {
         referrerPolicy="no-referrer-when-downgrade"
         className={styles.map}
       ></iframe>
-      <button type="submit">Submit</button>
+      <button type="submit">
+        Submit <span className={styles.note}>*[2]</span>
+      </button>
     </form>
   );
 }

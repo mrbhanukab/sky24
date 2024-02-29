@@ -33,6 +33,41 @@ export default function Home() {
           {status === 4 && <Step4 />}
         </div>
       </main>
+      <div className={styles.footnote}>
+        <h2>Footnote</h2>
+        <ol>
+          <li>
+            If your teammates are competing in different languages use the
+            "Multilingual" option and you must inform us personally. Also in
+            both Sinhala and Tamil medium papers, English will be used as the
+            second language option.
+          </li>
+          <li>
+            If you accidentally submitted wrong details when proceeding to the
+            next step, don't worry. You can re-edit the information at the end
+            of the form before submitting it to the database.
+          </li>
+          <li>
+            Language should be one of English, Sinhala, Tamil, or Multilingual.
+          </li>
+          <li>The team should be either A, B, or C.</li>
+          <li>
+            The exam center should be one in Colombo, Matara, Kandy, or
+            Anuradhapura.
+          </li>
+          <li>
+            If you accidentally submitted incorrect details when filling out the
+            form for the database, please &nbsp;
+            <a
+              href="https:wa.me/94706162457"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              contact us.
+            </a>
+          </li>
+        </ol>
+      </div>
     </>
   );
 }

@@ -1,8 +1,7 @@
-import React, { useState } from "react"; // Import useState from React
+import React, { useState } from "react";
 import styles from "@/styles/register.module.css";
 
 export default function Step2(props) {
-  // Define state variables for form data
   const [selectedTeam, setSelectedTeam] = useState("");
   const [members, setMembers] = useState([
     { name: "", whatsappNumber: "" },
@@ -12,25 +11,20 @@ export default function Step2(props) {
     { name: "", whatsappNumber: "" },
   ]);
 
-  // Function to handle team selection
   const handleTeamSelect = (event) => {
     setSelectedTeam(event.target.value);
   };
 
-  // Function to handle member input change
   const handleMemberChange = (index, field, value) => {
     const updatedMembers = [...members];
     updatedMembers[index][field] = value;
     setMembers(updatedMembers);
   };
 
-  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Save form data to session storage
     sessionStorage.setItem("selectedTeam", selectedTeam);
     sessionStorage.setItem("members", JSON.stringify(members));
-    // Redirect to next step
     props.func(3);
   };
 
@@ -51,6 +45,7 @@ export default function Step2(props) {
             placeholder={`${index + 1}st Member Name`}
             value={member.name}
             onChange={(e) => handleMemberChange(index, "name", e.target.value)}
+            {...(index < 2 ? { required: true } : {})}
           />
           <input
             type="tel"
@@ -61,10 +56,14 @@ export default function Step2(props) {
             onChange={(e) =>
               handleMemberChange(index, "whatsappNumber", e.target.value)
             }
+            {...(index < 2 ? { required: true } : {})}
           />
         </div>
       ))}
-      <button type="submit">Step 3</button>
+      <button type="submit">
+        Step 3 <span className={styles.note}>*[2]</span>
+      </button>
+      <div></div>
     </form>
   );
 }

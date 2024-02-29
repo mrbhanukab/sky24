@@ -1,6 +1,33 @@
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/home/Section2.module.css";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/components/firebase";
 import Link from "next/link";
-export default function FinalFinish() {
+
+export default function Final() {
+  const [finalTeams, setFinalTeams] = useState(0);
+  const [totalTeams, setTotalTeams] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const docRef = doc(db, "system", "final");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setFinalTeams(data.finalist || 0);
+          setTotalTeams(data.total || 0);
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error getting document:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <h1>Final Round ...</h1>
@@ -12,23 +39,23 @@ export default function FinalFinish() {
         competition will be fierce. So, gather your stardust, spacefarers, and
         prepare for a celestial showdown like no other!
       </p>
-      <div className={styles.btnGroup}>
-        <Link className={styles.btn} href="/finalRound">
-          Final Round Results
-        </Link>
-      </div>
       <div className={styles.info}>
         <div className={styles.infoCard}>
-          <h4>10</h4>
+          <h4>{finalTeams}</h4>
           <h5>final teams</h5>
         </div>
         <div className={styles.infoCard}>
           <h5>Selected From</h5>
         </div>
         <div className={styles.infoCard}>
-          <h4>40+</h4>
+          <h4>{totalTeams} +</h4>
           <h5>teams</h5>
         </div>
+      </div>
+            <div className={styles.btnGroup}>
+        <Link className={styles.btn} href="/finalRound">
+          Final Round Results
+        </Link>
       </div>
     </>
   );
