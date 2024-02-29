@@ -1,7 +1,10 @@
 import Head from "next/head";
-import Section1 from "@/components/home/Section1";
-import Section4n5 from "@/components/home/Section4n5";
-import Section2 from "@/components/home/Section2";
+import dynamic from "next/dynamic";
+
+const Section1 = dynamic(() => import("@/components/home/Section1"));
+const Section2 = dynamic(() => import("@/components/home/Section2"));
+const Section4n5 = dynamic(() => import("@/components/home/Section4n5"));
+
 export default function Home() {
   return (
     <>

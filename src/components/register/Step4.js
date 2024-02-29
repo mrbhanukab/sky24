@@ -3,7 +3,7 @@ import styles from "@/styles/register.module.css";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/components/firebase";
 
-const Step4 = (props) => {
+const Step4 = () => {
   const [formData, setFormData] = useState(
     JSON.parse(sessionStorage.getItem("formData"))
   );
@@ -17,6 +17,7 @@ const Step4 = (props) => {
     sessionStorage.getItem("selectedCenter")
   );
   const [already, setAlready] = useState(false);
+  const [submit, setSubmit] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -40,12 +41,12 @@ const Step4 = (props) => {
         selectedCenter: selectedCenter,
       };
       const docRef = await addDoc(teamsRef, formDataObject);
-      // console.log("Document written with ID: ", docRef.id);
     } catch (error) {
       alert("Error adding document!");
     }
+    setSubmit(true);
     sessionStorage.clear();
-    props.func(5);
+    setTimeout((window.location.href = "/"), 5000);
   };
 
   const handleInputChange = (e, index) => {
@@ -229,8 +230,17 @@ const Step4 = (props) => {
           </p>
         </div>
       )}
-
-      <button type="submit">Submit</button>
+      {submit === true ? (
+        <div className={styles.submitted}>
+          <h2>Data Submitted!</h2>
+          <p>
+            Data Submitted, Successfully! You will be redirect to home page
+            within 5 seconds.
+          </p>
+        </div>
+      ) : (
+        <button type="submit">Submit</button>
+      )}
     </form>
   );
 };

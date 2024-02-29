@@ -1,13 +1,12 @@
-import React, { useState, Suspense } from "react"; // Import useState and Suspense from React
+import React, { useState } from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import styles from "@/styles/register.module.css";
 
-// Lazy load all components
-const Step1 = React.lazy(() => import("@/components/register/Step1"));
-const Step2 = React.lazy(() => import("@/components/register/Step2"));
-const Step3 = React.lazy(() => import("@/components/register/Step3"));
-const Step4 = React.lazy(() => import("@/components/register/Step4"));
-const Step5 = React.lazy(() => import("@/components/register/Step5"));
+const Step1 = dynamic(() => import("@/components/register/Step1"));
+const Step2 = dynamic(() => import("@/components/register/Step2"));
+const Step3 = dynamic(() => import("@/components/register/Step3"));
+const Step4 = dynamic(() => import("@/components/register/Step4"));
 
 export default function Home() {
   const [status, setStatus] = useState(1);
@@ -27,13 +26,12 @@ export default function Home() {
       </Head>
       <main className={styles.mainContainer}>
         <h1>REGISTRATION FORM</h1>
-        <Suspense fallback={<div>Loading...</div>}>
+        <div>
           {status === 1 && <Step1 func={pull_data} />}
           {status === 2 && <Step2 func={pull_data} />}
           {status === 3 && <Step3 func={pull_data} />}
-          {status === 4 && <Step4 func={pull_data} />}
-          {status === 5 && <Step5 />}
-        </Suspense>
+          {status === 4 && <Step4 />}
+        </div>
       </main>
     </>
   );

@@ -76,6 +76,13 @@
   margin-top: 5vh;
 }
 
+.submitted {
+  background: #7ae582 !important;
+  padding: 2rem;
+  border-radius: 1rem;
+  color: var(--black) !important;
+}
+
 .already {
   background: #bc4749 !important;
   padding: 2rem;

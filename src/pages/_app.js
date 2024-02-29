@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
 import { useEffect } from "react";
+
 const mollen = localFont({
   src: [
     {
@@ -20,16 +21,29 @@ const mollen = localFont({
     },
   ],
 });
+
 export default function App({ Component, pageProps }) {
   useEffect(() => {
     const handleContextmenu = (e) => {
       e.preventDefault();
     };
+    const handleKeyDown = (e) => {
+      if (
+        e.ctrlKey &&
+        e.shiftKey &&
+        (e.key === "C" || e.key === "J" || e.key === "I")
+      ) {
+        e.preventDefault();
+      }
+    };
     document.addEventListener("contextmenu", handleContextmenu);
+    document.addEventListener("keydown", handleKeyDown);
     return function cleanup() {
       document.removeEventListener("contextmenu", handleContextmenu);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
   return (
     <>
       <main className={mollen.className}>

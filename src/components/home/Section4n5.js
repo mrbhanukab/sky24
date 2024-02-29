@@ -1,5 +1,4 @@
 import styles from "@/styles/home/Section4n5.module.css";
-import Image from "next/image";
 
 export default function Section4n5() {
   return (
@@ -13,34 +12,46 @@ export default function Section4n5() {
           enhance the interest of Sri Lankan astronomy enthusiasts.
         </p>
         <div className={styles.social}>
-          <a href="https://www.facebook.com/isipathana.astro" target="_blank">
-            <Image
+          <a
+            href="https://www.facebook.com/isipathana.astro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
               className={styles.img}
               src="/assets/sicons/facebook.png"
-              width={1000}
-              height={1000}
+              width={100}
+              height={100}
               loading="lazy"
               alt="Facebook"
             />
           </a>
-          <a href="https://www.instagram.com/isipathana.astro" target="_blank">
-            <Image
+          <a
+            href="https://www.instagram.com/isipathana.astro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
               className={styles.img}
               src="/assets/sicons/instgram.png"
-              width={1000}
-              height={1000}
+              width={100}
+              height={100}
               loading="lazy"
-              alt="Facebook"
+              alt="Instagram"
             />
           </a>
-          <a href="https://www.youtube.com/@isipathana-astro" target="_blank">
-            <Image
+          <a
+            href="https://www.youtube.com/@isipathana-astro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
               className={styles.img}
               src="/assets/sicons/youtube.png"
-              width={1000}
-              height={1000}
+              width={100}
+              height={100}
               loading="lazy"
-              alt="Facebook"
+              alt="Youtube"
             />
           </a>
         </div>
