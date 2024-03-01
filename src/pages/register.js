@@ -7,9 +7,10 @@ const Step1 = dynamic(() => import("@/components/register/Step1"));
 const Step2 = dynamic(() => import("@/components/register/Step2"));
 const Step3 = dynamic(() => import("@/components/register/Step3"));
 const Step4 = dynamic(() => import("@/components/register/Step4"));
+const Step5 = dynamic(() => import("@/components/register/Step5"));
 
 export default function Register() {
-  const [status, setStatus] = useState(1);
+  const [status, setStatus] = useState(5);
 
   const pull_data = (data) => {
     setStatus(data);
@@ -25,12 +26,13 @@ export default function Register() {
         />
       </Head>
       <main className={styles.mainContainer}>
-        <h1>REGISTRATION FORM</h1>
+        <h1>{status === 5 ? "REGISTRATION COMPLETE" : "REGISTRATION FORM"}</h1>
         <div>
           {status === 1 && <Step1 func={pull_data} />}
           {status === 2 && <Step2 func={pull_data} />}
           {status === 3 && <Step3 func={pull_data} />}
-          {status === 4 && <Step4 />}
+          {status === 4 && <Step4 func={pull_data} />}
+          {status === 5 && <Step5 />}
         </div>
       </main>
       <div className={styles.footnote}>

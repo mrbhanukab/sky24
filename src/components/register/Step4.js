@@ -3,7 +3,7 @@ import styles from "@/styles/register.module.css";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/components/firebase";
 
-const Step4 = () => {
+const Step4 = (props) => {
   const [formData, setFormData] = useState(
     JSON.parse(sessionStorage.getItem("formData"))
   );
@@ -17,7 +17,6 @@ const Step4 = () => {
     sessionStorage.getItem("selectedCenter")
   );
   const [already, setAlready] = useState(false);
-  const [submit, setSubmit] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -44,9 +43,8 @@ const Step4 = () => {
     } catch (error) {
       alert("Error adding document!");
     }
-    setSubmit(true);
     sessionStorage.clear();
-    setTimeout((window.location.href = "/"), 5000);
+    props.func(5);
   };
 
   const handleInputChange = (e, index) => {
@@ -247,19 +245,9 @@ const Step4 = () => {
           </p>
         </div>
       )}
-      {submit === true ? (
-        <div className={styles.submitted}>
-          <h2>Data Submitted!</h2>
-          <p>
-            Data Submitted, Successfully! You will be redirect to home page
-            within 5 seconds.
-          </p>
-        </div>
-      ) : (
         <button type="submit">
           Submit <span className={styles.note}>*[3]</span>
         </button>
-      )}
     </form>
   );
 };

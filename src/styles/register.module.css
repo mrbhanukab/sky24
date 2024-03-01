@@ -17,14 +17,14 @@
   margin-top: 0.5em;
 }
 
-.note{
-  font-size: .5em;
+.note {
+  font-size: 0.5em;
   font-weight: 200;
   vertical-align: super;
 }
 
-.note1{
-  font-size: .7em;
+.note1 {
+  font-size: 0.7em;
   font-weight: 300;
   vertical-align: super;
 }
@@ -88,12 +88,36 @@
   margin-top: 5vh;
 }
 
-.submitted {
-  background: #7ae582 !important;
-  padding: 2rem;
-  border-radius: 1rem;
-  color: var(--black) !important;
+.successP {
+  font-weight: 300;
+  font-size: 150% !important;
+  margin-top: 8vh !important;
 }
+
+.btn {
+  text-decoration: none;
+  color: var(--black);
+  background: var(--white);
+  margin-right: 2.5vw;
+  margin-top: 5vh;
+  padding: 1.5vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-family: "Montserrat";
+  font-weight: bolder;
+  text-align: center;
+  width: 70%;
+  align-self: center;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
+  -moz-box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
+  box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
+}
+
 
 .footnote {
   padding: 2rem;
@@ -102,12 +126,12 @@
 }
 
 .footnote h2 {
-font-size: 1em;
+  font-size: 1em;
 }
 
 .footnote ol {
   margin: 1rem;
-font-size: .8em;
+  font-size: 0.8em;
 }
 
 .footnote a {
