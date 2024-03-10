@@ -1,44 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Head from "next/head";
-import styles from "@/styles/finalResults.module.css";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "@/components/firebase";
+import styles from "@/styles/round.module.css";
 
-export default function FinalRound() {
-  const [finalTeams, setFinalTeams] = useState([]);
-  const [otherTeams, setOtherTeams] = useState([]);
-
-  useEffect(() => {
-    const fetchTeams = async () => {
-      const teamsRef = collection(db, "teams");
-      const q = query(teamsRef, where("final", ">", 0));
-      const querySnapshot = await getDocs(q);
-      const finalTeamsData = [];
-      const otherTeamsData = [];
-      querySnapshot.forEach((doc) => {
-        const teamData = doc.data();
-        if (teamData.final <= 3) {
-          finalTeamsData.push(teamData);
-        } else {
-          otherTeamsData.push(teamData);
-        }
-      });
-      setFinalTeams(finalTeamsData);
-      setOtherTeams(otherTeamsData);
-    };
-
-    fetchTeams();
-  }, []);
-
+export default function FinalRound({ finalTeams, otherTeams }) {
   return (
     <>
-      <Head>
-        <title>SKY24 | Final Round Results Sheet</title>
-        <meta
-          name="description"
-          content="Sky24, A Quiz Competition Hosted by ICAS"
-        />
-      </Head>
       <main className={styles.mainContainer}>
         <h1>Final Round Results Sheet</h1>
         <p>

@@ -17,16 +17,16 @@
         "destination": "/rules.html"
       },
       {
-        "source": "/firstRound",
-        "destination": "/firstRound.html"
+        "source": "/round/**",
+        "destination": "/round/[id]/index.html"
       },
       {
-        "source": "/finalRound",
-        "destination": "/finalRound.html"
+        "source": "/",
+        "destination": "/index.html"
       },
       {
         "source": "/**",
-        "destination": "/index.html"
+        "destination": "/404.html"
       }
     ]
   }

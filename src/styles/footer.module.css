@@ -1,0 +1,32 @@
+.footer {
+  width: 100vw;
+  min-height: 75vh; /* Set full viewport height */
+  text-align: center;
+  padding: 1rem;
+  font-family: "Montserrat";
+  font-size: 0.8rem;
+  color: #00000052;
+  background-image: url(/assets/Bg-Top.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: inherit;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #00000052;
+}
+
+.footer a::before {
+  text-decoration: none;
+  color: #00000052;
+}
+
+.footer a::after {
+  text-decoration: none;
+  color: #00000052;
+}
+
+.footer a:hover {
+  color: #000000;
+}

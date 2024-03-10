@@ -1,36 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Head from "next/head";
-import styles from "@/styles/firstResults.module.css";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "@/components/firebase";
+import styles from "@/styles/round.module.css";
 
-export default function FirstRound() {
-  const [teams, setTeams] = useState([]);
-
-  useEffect(() => {
-    const fetchTeams = async () => {
-      const teamsRef = collection(db, "teams");
-      const q = query(teamsRef, where("selected", "==", true));
-      const querySnapshot = await getDocs(q);
-      const teamsData = [];
-      querySnapshot.forEach((doc) => {
-        teamsData.push(doc.data());
-      });
-      setTeams(teamsData);
-    };
-
-    fetchTeams();
-  }, []);
-
+export default function FirstRound({ teams }) {
   return (
     <>
-      <Head>
-        <title>SKY24 | First Round Results Sheet</title>
-        <meta
-          name="description"
-          content="Sky24, A Quiz Competition Hosted by ICAS"
-        />
-      </Head>
       <main className={styles.mainContainer}>
         <h1>First Round Results Sheet</h1>
         <p>

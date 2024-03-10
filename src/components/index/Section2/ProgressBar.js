@@ -1,4 +1,4 @@
-import styles from "@/styles/home/Section2.module.css";
+import styles from "@/styles/index.module.css";
 
 export default function ProgressBar(props) {
   // Function to generate events array based on props.status

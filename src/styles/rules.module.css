@@ -1,4 +1,5 @@
 .mainContainer {
+  opacity: 0;
   background: var(--black);
   color: var(--white);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -8,6 +9,16 @@
   min-height: 100vh;
   margin: 3.5%;
   padding: 5%;
+  animation: fadeIn 1s forwards !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* start from 0 opacity */
+  }
+  to {
+    opacity: 1; /* end at 1 opacity */
+  }
 }
 
 .Head {

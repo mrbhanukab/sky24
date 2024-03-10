@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import styles from "@/styles/home/Section2.module.css";
+import styles from "@/styles/index.module.css";
 import ProgressBar from "./Section2/ProgressBar";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/components/firebase";
@@ -54,8 +54,8 @@ export default function Section2() {
   };
 
   return (
-    <section className={styles.section}>
-      <div className={styles.card}>
+    <section className={styles.section2}>
+      <div className={styles.card2}>
         <ProgressBar status={status} />
         <React.Suspense fallback={<div>Loading...</div>}>
           {renderComponent()}
