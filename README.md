@@ -42,3 +42,4 @@ Here are some features we plan to implement in future updates:
 - **Search Input with Select**: Implement a search input with select functionality using React Select to streamline the process of selecting schools and improve database querying.
 - **Database Optimization**: Optimize the database and Firebase rules for better performance and security.
 - **Firebase Information Encryption**: Encrypt Firebase information in Firebase.js to enhance security measures.
+- **Add Loading Page to Registaration Page**
