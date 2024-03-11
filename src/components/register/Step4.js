@@ -228,25 +228,34 @@ const Step4 = (props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Ginura (President)
+                  Ginura Buddila (President)
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/94703886215"
+                  href="https://wa.me/94714558808"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Movindu (Past-President)
+                  Suyama Janidu
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/94767733492"
+                  href="https://wa.me/94702439643"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Developer
+                  Sethum Hansana
+                </a>
+              </li>{" "}
+              <li>
+                <a
+                  href="https://wa.me/94710362934"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Vimeth Damhiru
                 </a>
               </li>
             </ul>

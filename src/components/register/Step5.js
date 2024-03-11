@@ -26,7 +26,7 @@ const Step5 = () => {
         delay, and we'll ensure your cosmic journey continues seamlessly!
       </p>
       <Link className={styles.btn} href="https://wa.me/94706162457">
-        Ginura Budhila(President)
+        Ginura Buddila(President)
       </Link>
       <Link className={styles.btn} href="https://wa.me/94714558808">
         Suyama Janidu

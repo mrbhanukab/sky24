@@ -1,8 +1,10 @@
-import React, { useState } from "react"; // Import useState from React
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/register.module.css";
+import CreatableSelect from "react-select/creatable";
+import { db } from "@/components/firebase";
+import { collection, getDocs, where, query } from "firebase/firestore";
 
 export default function Step1(props) {
-  // Define state variable for form data object
   const [formData, setFormData] = useState({
     schoolName: "",
     schoolAddress: "",
@@ -11,18 +13,51 @@ export default function Step1(props) {
     ticContactNumber: "",
     presidentName: "",
     presidentContactNumber: "",
-    language: "sinhala", // Default value for language select
+    language: "sinhala",
   });
+  const [options, setOptions] = useState([]);
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const schoolsRef = collection(db, "teams");
+      const querySnapshot = await getDocs(schoolsRef);
+      const schoolNames = [];
+      querySnapshot.forEach((doc) => {
+        const schoolName = doc.data().formData.schoolName;
+        if (schoolName && !schoolNames.includes(schoolName)) {
+          schoolNames.push(schoolName);
+        }
+      });
+      const formattedOptions = schoolNames.map((name) => ({
+        value: name,
+        label: name,
+      }));
+      setOptions(formattedOptions);
+    };
+
+    fetchData();
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Save form data to session storage
     sessionStorage.setItem("formData", JSON.stringify(formData));
-    // Redirect to next step
     props.func(2);
   };
 
-  // Function to update form data for text inputs
+  const handleCreate = (inputValue) => {
+    const newOption = { value: inputValue, label: inputValue };
+    setOptions([...options, newOption]);
+    setValue(newOption);
+    setFormData({
+      ...formData,
+      schoolName: inputValue,
+      // Clear schoolAddress and societyEmail when creating a new school
+      schoolAddress: "",
+      societyEmail: "",
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -31,26 +66,41 @@ export default function Step1(props) {
     });
   };
 
-  // Function to update form data for select input
-  const handleSelectChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleSelectChange = async (newValue, actionMeta) => {
+    setValue(newValue);
+    if (actionMeta.action === "select-option") {
+      const schoolName = newValue.value;
+      const schoolsRef = collection(db, "teams");
+      const q = query(
+        schoolsRef,
+        where("formData.schoolName", "==", schoolName)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const data = doc.data().formData;
+        setFormData({
+          ...formData,
+          schoolName: data.schoolName,
+          schoolAddress: data.schoolAddress,
+          societyEmail: data.societyEmail,
+        });
+      });
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.Step1}>
       <h2>1. Society Info</h2>
-      <input
-        type="text"
-        autoFocus
-        required
-        placeholder="School Name"
-        name="schoolName"
-        value={formData.schoolName}
-        onChange={handleInputChange}
+      <CreatableSelect
+        isClearable
+        onChange={handleSelectChange}
+        onCreateOption={handleCreate}
+        options={options}
+        value={value}
+        formatCreateLabel={(inputValue) => `Add School "${inputValue}"`}
+        className="react-select-container"
+        classNamePrefix="react-select"
+        placeholder="Select or Type Your School Name & Click Add"
       />
       <input
         type="text"
@@ -106,9 +156,9 @@ export default function Step1(props) {
         onChange={handleInputChange}
       />
       <select
-        name="language" // Specify the name attribute for the select element
-        value={formData.language} // Set the value to control the select element
-        onChange={handleSelectChange} // Handle the change event
+        name="language"
+        value={formData.language}
+        onChange={handleInputChange}
         required
       >
         <option value="sinhala">Sinhala</option>

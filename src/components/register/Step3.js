@@ -1,18 +1,11 @@
 import React, { useState } from "react"; // Import useState from React
 import styles from "@/styles/register.module.css";
+import Select from "react-select";
 
 export default function Step3(props) {
-  const position = [
-    "1d3961.0243835157376!2d79.86564797578664!3d6.887682618822538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b3a2a7fbef7%3A0x270e752088df4370!2sIsipathana%20College!5e0!3m2!1sen!2slk!4v1708606664468",
-    "1d3968.298721171468!2d80.534848!3d5.9535164!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae13f2fccbd5171%3A0xe8fd88a01a8bdb6!2sRahula%20College!5e0!3m2!1sen!2slk!4v1710170981192",
-    "1d494.68792088255776!2d80.63559022687384!3d7.297202495841893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae367d4d158f463%3A0xf3665cbfabef83a8!2sSilvester&#39;s%20Main%20Building%2C%20Yatinuwara%20St%2C%20Kandy!5e0!3m2!1sen!2slk!4v1710171305374!5m2!1sen!2slk",
-    "1d3947.6662496668!2d80.40751270000001!3d8.3359217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afcf5a62d9a7611%3A0x387440fbae77a0ac!2sAnuradhapura%20Central%20College!5e0!3m2!1sen!2slk!4v1708613797222",
-  ];
   const [selectedCenter, setSelectedCenter] = useState("colombo");
   const [srcMap, setSrcMap] = useState(
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!" +
-      position[0] +
-      "!5m2!1sen!2slk"
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0243835157376!2d79.86564797578664!3d6.887682618822538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b3a2a7fbef7%3A0x270e752088df4370!2sIsipathana%20College!5e0!3m2!1sen!2slk!4v1708606664468!5m2!1sen!2slk"
   );
 
   const handleSubmit = (event) => {
@@ -22,30 +15,23 @@ export default function Step3(props) {
     props.func(4);
   };
 
-  const handleSelectChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedCenter(selectedValue);
-    if (selectedValue === "colombo") {
+  const handleSelectChange = (selectedOption) => {
+    setSelectedCenter(selectedOption.value);
+    if (selectedOption.value === "colombo") {
       setSrcMap(
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!" +
-          position[0] +
-          "!5m2!1sen!2slk"
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0243835157376!2d79.86564797578664!3d6.887682618822538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b3a2a7fbef7%3A0x270e752088df4370!2sIsipathana%20College!5e0!3m2!1sen!2slk!4v1708606664468!5m2!1sen!2slk"
       );
-    } else if (selectedValue === "matara") {
+    } else if (selectedOption.value === "matara") {
       setSrcMap(
-        "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!" +
-          position[1] +
-          "!5m2!1sen!2slk"
+        "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3968.298721171468!2d80.534848!3d5.9535164!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae13f2fccbd5171%3A0xe8fd88a01a8bdb6!2sRahula%20College!5e0!3m2!1sen!2slk!4v1710170981192!5m2!1sen!2slk"
       );
-    } else if (selectedValue === "kandy") {
+    } else if (selectedOption.value === "kandy") {
       setSrcMap(
         "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d494.68767167102425!2d80.63546983491824!3d7.297427900000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1710171505811!5m2!1sen!2slk"
       );
-    } else if (selectedValue === "anuradhapura") {
+    } else if (selectedOption.value === "anuradhapura") {
       setSrcMap(
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!" +
-          position[3] +
-          "!5m2!1sen!2slk"
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.6662496668!2d80.40751270000001!3d8.3359217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afcf5a62d9a7611%3A0x387440fbae77a0ac!2sAnuradhapura%20Central%20College!5e0!3m2!1sen!2slk!4v1708613797222!5m2!1sen!2slk"
       );
     }
   };
@@ -53,25 +39,32 @@ export default function Step3(props) {
   return (
     <form onSubmit={handleSubmit} className={styles.Step1}>
       <h2>3. Choose Exam Center</h2>
-      <select
-        value={selectedCenter}
-        defaultValue="colombo"
+      <Select
+        options={[
+          { value: "colombo", label: "Isipathana College, Colombo" },
+          { value: "matara", label: "Rahula College, Matara" },
+          { value: "kandy", label: "St.Sylvester's College, Kandy" },
+          {
+            value: "anuradhapura",
+            label: "Anuradhapura Central College, Anuradhapura",
+          },
+        ]}
+        value={{
+          value: selectedCenter,
+          label:
+            selectedCenter === "colombo"
+              ? "Isipathana College, Colombo"
+              : selectedCenter === "matara"
+              ? "Rahula College, Matara"
+              : selectedCenter === "kandy"
+              ? "St.Sylvester's College, Kandy"
+              : "Anuradhapura Central College, Anuradhapura",
+        }}
         onChange={handleSelectChange}
         required
-      >
-        <option key="colombo" value="colombo">
-          Isipathana College &#44; Colombo
-        </option>
-        <option key="matara" value="matara">
-          Rahula College &#44; Matara
-        </option>
-        <option key="kandy" value="kandy">
-          St.Sylvester's College &#44; Kandy
-        </option>
-        <option key="anuradhapura" value="anuradhapura">
-          Anuradhapura Central College &#44; Anuradhapura
-        </option>
-      </select>
+        className="react-select-container"
+        classNamePrefix="react-select"
+      />
       <iframe
         src={srcMap}
         loading="lazy"

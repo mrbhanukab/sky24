@@ -46,3 +46,41 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+.react-select__control {
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+  background-color: #00000000 !important;
+  border: #ffffff00 !important;
+  padding: 1% !important;
+  border-bottom: var(--white) solid !important;
+  margin-top: 5vh !important;
+}
+
+.react-select__control div {
+  font-size: 1rem !important;
+  color: #ffffff;
+  font-family: "Montserrat" !important;
+}
+
+.react-select__menu {
+  background-color: #00000000 !important;
+}
+
+.react-select__menu-list {
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+  border: #ffffff00 !important;
+  border-radius: 1rem !important;
+  background-color: var(--white) !important;
+}
+
+.react-select__option {
+  background-color: var(--white) !important;
+  color: var(--black) !important;
+}
+
+.react-select__option--is-disabled {
+  background-color: var(--white) !important;
+  color: #3d3d3d65 !important;
+}
