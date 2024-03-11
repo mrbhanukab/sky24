@@ -42,10 +42,10 @@ export default function Step2(props) {
           <input
             type="text"
             autoFocus
-            placeholder={`${index + 1}st Member Name`}
+            placeholder={`${index + 1}${index < 2 ? "st" : "th"} Member Name`}
             value={member.name}
             onChange={(e) => handleMemberChange(index, "name", e.target.value)}
-            {...(index < 2 ? { required: true } : {})}
+            required={index < 2} // Make first two inputs required
           />
           <input
             type="tel"
@@ -56,7 +56,7 @@ export default function Step2(props) {
             onChange={(e) =>
               handleMemberChange(index, "whatsappNumber", e.target.value)
             }
-            {...(index < 2 ? { required: true } : {})}
+            required={index < 2} // Make first two inputs required
           />
         </div>
       ))}

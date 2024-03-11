@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import styles from "@/styles/register.module.css";
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { db } from "@/components/firebase";
 
 const Step4 = (props) => {
@@ -33,13 +40,14 @@ const Step4 = (props) => {
         return;
       }
 
+      const teamId = formData.schoolName + " Team " + selectedTeam;
       const formDataObject = {
         formData: formData,
         selectedTeam: selectedTeam,
         members: members,
         selectedCenter: selectedCenter,
       };
-      const docRef = await addDoc(teamsRef, formDataObject);
+      await setDoc(doc(teamsRef, teamId), formDataObject);
     } catch (error) {
       alert("Error adding document!");
     }
@@ -245,9 +253,9 @@ const Step4 = (props) => {
           </p>
         </div>
       )}
-        <button type="submit">
-          Submit <span className={styles.note}>*[3]</span>
-        </button>
+      <button type="submit">
+        Submit <span className={styles.note}>*[3]</span>
+      </button>
     </form>
   );
 };

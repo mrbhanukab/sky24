@@ -110,6 +110,7 @@
   text-align: center;
   width: 70%;
   align-self: center;
+  transition: all 2s ease;
 }
 
 .btn:hover {
@@ -117,7 +118,6 @@
   -moz-box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
   box-shadow: 0px 0px 134px 40px rgba(48, 48, 48, 0.2);
 }
-
 
 .footnote {
   padding: 2rem;
@@ -214,12 +214,13 @@
   border-radius: 1rem;
   background: var(--white);
   color: var(--black);
+  transition: all 0.2s ease-in-out;
 }
 
 .Step1 button:hover {
-  -webkit-box-shadow: 0px 0px 50px 10px var(--white);
-  -moz-box-shadow: 0px 0px 50px 10px var(--white);
-  box-shadow: 0px 0px 50px 10px var(--white);
+  -webkit-box-shadow: 0px 0px 75px 5px var(--white);
+  -moz-box-shadow: 0px 0px 75px 5px var(--white);
+  box-shadow: 0px 0px 75px 5px var(--white);
 }
 
 .twoCol {

@@ -25,35 +25,17 @@ const Step5 = () => {
         we're here to assist you every step of the way. Reach out to us without
         delay, and we'll ensure your cosmic journey continues seamlessly!
       </p>
-      <Link
-        className={styles.btn}
-        href="https://whatsapp.com/channel/0029VaNp7ThEquiYG2J5dX2l"
-      >
-        Ginura (President)
+      <Link className={styles.btn} href="https://wa.me/94706162457">
+        Ginura Budhila(President)
       </Link>
-      <Link
-        className={styles.btn}
-        href="https://whatsapp.com/channel/0029VaNp7ThEquiYG2J5dX2l"
-      >
-        Ginura (President)
-      </Link>{" "}
-      <Link
-        className={styles.btn}
-        href="https://whatsapp.com/channel/0029VaNp7ThEquiYG2J5dX2l"
-      >
-        Ginura (President)
-      </Link>{" "}
-      <Link
-        className={styles.btn}
-        href="https://whatsapp.com/channel/0029VaNp7ThEquiYG2J5dX2l"
-      >
-        Ginura (President)
-      </Link>{" "}
-      <Link
-        className={styles.btn}
-        href="https://whatsapp.com/channel/0029VaNp7ThEquiYG2J5dX2l"
-      >
-        Ginura (President)
+      <Link className={styles.btn} href="https://wa.me/94714558808">
+        Suyama Janidu
+      </Link>
+      <Link className={styles.btn} href="https://wa.me/94702439643">
+        Sethum Hansana
+      </Link>
+      <Link className={styles.btn} href="https://wa.me/94710362934">
+        Vimeth Damhiru
       </Link>
     </section>
   );

@@ -1,14 +1,15 @@
+
 - The quiz competition will have three rounds: the 1st round, 2nd round and the final round.
-- The first round will take place at four venues across the island on 30th March 2024 from 10:00 to 12:30.
-  The venues are:
-  1. Colombo: Isipathana College
-  2. Kandy: Kingswood College
-  3. Anuradhapura: Anuradhapura Central College
-  4. Matara: St. Thomas College Matara
+- The first round will take place at four venues across the island on **16th March 2024.** The venues are:
+    1. Colombo: Isipathana College
+    2. Kandy: St.Sylvester's College
+    3. Anuradhapura: Anuradhapura Central College
+    4. Matara: Rahula College, Matara
 - Each team must attend the closest venue from the list above.
 - Each school can send up to three teams to the quiz competition.
 - Each team must have five members.
-- The questions for the first round will cover five main topics in astronomy: Cosmology, Rocketry, Astrophysics, Observation and Astrobiology .
+- All participants must be under the age of **18 by February 2024.**
+- The questions for the first round will cover five main topics in astronomy: Cosmology, Rocketry, Astrophysics, Observation and General Astronomy with Astrobiology.
 - The questions will be available in English, Sinhala, and Tamil.
 - The top 20 teams from the first round will qualify for the final round.
 - Electronic devices are not allowed during the quiz competition. Only scientific calculators without any text storage capability can be used.

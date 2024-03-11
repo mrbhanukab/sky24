@@ -4,8 +4,8 @@ import styles from "@/styles/register.module.css";
 export default function Step3(props) {
   const position = [
     "1d3961.0243835157376!2d79.86564797578664!3d6.887682618822538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b3a2a7fbef7%3A0x270e752088df4370!2sIsipathana%20College!5e0!3m2!1sen!2slk!4v1708606664468",
-    "1d992.083934940675!2d80.54352448483662!3d5.948388888341097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae138d4cb2adf4d%3A0xc9c150f269c89d25!2sMain%20Office%2C%20Kumarathunga%20Mawatha%2C%20Matara!5e0!3m2!1sen!2slk!4v1708616323826",
-    "1d3957.675274227323!2d80.61309204024671!3d7.277740792759698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae368942d21023f%3A0x3843546e47aefe57!2sKingswood%20College%2C%20Kandy!5e0!3m2!1sen!2slk!4v1708613720931",
+    "1d3968.298721171468!2d80.534848!3d5.9535164!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae13f2fccbd5171%3A0xe8fd88a01a8bdb6!2sRahula%20College!5e0!3m2!1sen!2slk!4v1710170981192",
+    "1d494.68792088255776!2d80.63559022687384!3d7.297202495841893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae367d4d158f463%3A0xf3665cbfabef83a8!2sSilvester&#39;s%20Main%20Building%2C%20Yatinuwara%20St%2C%20Kandy!5e0!3m2!1sen!2slk!4v1710171305374!5m2!1sen!2slk",
     "1d3947.6662496668!2d80.40751270000001!3d8.3359217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afcf5a62d9a7611%3A0x387440fbae77a0ac!2sAnuradhapura%20Central%20College!5e0!3m2!1sen!2slk!4v1708613797222",
   ];
   const [selectedCenter, setSelectedCenter] = useState("colombo");
@@ -33,15 +33,13 @@ export default function Step3(props) {
       );
     } else if (selectedValue === "matara") {
       setSrcMap(
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!" +
+        "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!" +
           position[1] +
           "!5m2!1sen!2slk"
       );
     } else if (selectedValue === "kandy") {
       setSrcMap(
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!" +
-          position[2] +
-          "!5m2!1sen!2slk"
+        "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d494.68767167102425!2d80.63546983491824!3d7.297427900000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1710171505811!5m2!1sen!2slk"
       );
     } else if (selectedValue === "anuradhapura") {
       setSrcMap(
@@ -65,10 +63,10 @@ export default function Step3(props) {
           Isipathana College &#44; Colombo
         </option>
         <option key="matara" value="matara">
-          St. Thomas' College &#44; Matara
+          Rahula College &#44; Matara
         </option>
         <option key="kandy" value="kandy">
-          Kingswood College &#44; Kandy
+          St.Sylvester's College &#44; Kandy
         </option>
         <option key="anuradhapura" value="anuradhapura">
           Anuradhapura Central College &#44; Anuradhapura
