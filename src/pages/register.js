@@ -83,15 +83,6 @@ export default function Register() {
                 the end of the form before submitting it to the database.
               </li>
               <li>
-                Language should be one of English, Sinhala, Tamil, or
-                Multilingual.
-              </li>
-              <li>The team should be either A, B, or C.</li>
-              <li>
-                The exam center should be one in Colombo, Matara, Kandy, or
-                Anuradhapura.
-              </li>
-              <li>
                 If you accidentally submitted incorrect details when filling out
                 the form for the database, please &nbsp;
                 <a

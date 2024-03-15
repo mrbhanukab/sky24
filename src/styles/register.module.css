@@ -1,12 +1,22 @@
 .p input {
-  margin-top: 1vh !important;
+  margin: 0vh !important;
+  /* border-bottom: #ffffff  !important; */}
+
+.p select {
+  margin: 0% !important;
+  width: 75% !important;
 }
 
 .p {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100% !important;
   padding: 1rem;
+  /* background-color: #bc4749; */
+  justify-content: space-around !important;
+  align-items: flex-start;
+  align-content: flex-start !important;
 }
 
 .p1 {

@@ -2,9 +2,9 @@ import React, { useState } from "react"; // Import useState from React
 import styles from "@/styles/register.module.css";
 
 export default function Step3(props) {
-  const [selectedCenter, setSelectedCenter] = useState("colombo");
+  const [selectedCenter, setSelectedCenter] = useState("");
   const [srcMap, setSrcMap] = useState(
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0243835157376!2d79.86564797578664!3d6.887682618822538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b3a2a7fbef7%3A0x270e752088df4370!2sIsipathana%20College!5e0!3m2!1sen!2slk!4v1708606664468!5m2!1sen!2slk"
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2023616.6685318546!2d79.38684658183429!3d7.8556276967505205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1710512392771!5m2!1sen!2slk"
   );
 
   const handleSubmit = (event) => {
@@ -33,6 +33,10 @@ export default function Step3(props) {
       setSrcMap(
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.6662496668!2d80.40751270000001!3d8.3359217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afcf5a62d9a7611%3A0x387440fbae77a0ac!2sAnuradhapura%20Central%20College!5e0!3m2!1sen!2slk!4v1708613797222!5m2!1sen!2slk"
       );
+    } else if (selectedValue === "") {
+      setSrcMap(
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2023616.6685318546!2d79.38684658183429!3d7.8556276967505205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1710512392771!5m2!1sen!2slk"
+      );
     }
   };
 
@@ -45,6 +49,7 @@ export default function Step3(props) {
         onChange={handleSelectChange}
         required
       >
+        <option value="">Select a Exam Center</option>
         <option key="colombo" value="colombo">
           Isipathana College &#44; Colombo
         </option>

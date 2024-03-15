@@ -169,25 +169,38 @@ const Step4 = (props) => {
               </p>
               <p className={styles.p}>
                 Language:
-                <span className={styles.note1}>*[3]</span>
-                <input
-                  type="text"
+                <select
                   name="language"
                   value={formData.language}
-                  onChange={handleInputChange}
-                />
+                  onChange={(e) =>
+                    setFormData({ ...formData, language: e.target.value })
+                  }
+                  required
+                >
+                  <option value="">Select Language</option>
+                  <option value="sinhala">Sinhala</option>
+                  <option value="english">English</option>
+                  <option value="tamil">Tamil</option>
+                  <option value="multilingual">
+                    Multilingual <span className={styles.note}>*[1]</span>
+                  </option>
+                </select>
               </p>
             </div>
             <div className={styles.card}>
               <h3>Team Info</h3>
               <p className={styles.p}>
-                Selected Team: <span className={styles.note1}>*[4]</span>
-                <input
-                  type="text"
-                  name="selectedTeam"
+                Selected Team:
+                <select
                   value={selectedTeam}
-                  onChange={handleInputChange}
-                />
+                  onChange={(e) => setSelectedTeam(e.target.value)}
+                  required
+                >
+                  <option value="">Select a Team</option>
+                  <option value="A">Team A</option>
+                  <option value="B">Team B</option>
+                  <option value="C">Team C</option>
+                </select>
               </p>
               {members.map((member, index) => (
                 <li key={index} type="none">
@@ -213,13 +226,19 @@ const Step4 = (props) => {
             <div className={styles.card}>
               <h3>Exam Center</h3>
               <p className={styles.p}>
-                <span className={styles.note1}>*[5]</span>
-                <input
-                  type="text"
-                  name="selectedCenter"
+                <select
                   value={selectedCenter}
-                  onChange={handleInputChange}
-                />
+                  onChange={(e) => setSelectedCenter(e.target.value)}
+                  required
+                >
+                  <option value="">Select an Exam Center</option>
+                  <option value="colombo">Isipathana College, Colombo</option>
+                  <option value="matara">Rahula College, Matara</option>
+                  <option value="kandy">St.Sylvester's College, Kandy</option>
+                  <option value="anuradhapura">
+                    Anuradhapura Central College, Anuradhapura
+                  </option>
+                </select>
               </p>
             </div>
           </div>
