@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  animation: fadeIn 4s forwards !important;
+  animation: fadeIn 5s forwards !important;
 }
 
 @keyframes fadeIn {

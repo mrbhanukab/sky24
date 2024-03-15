@@ -9,6 +9,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { db } from "@/components/firebase";
+import Loading from "../Loading";
 
 const Step4 = (props) => {
   const [formData, setFormData] = useState(
@@ -24,7 +25,9 @@ const Step4 = (props) => {
     sessionStorage.getItem("selectedCenter")
   );
   const [already, setAlready] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const handleSubmit = async (e) => {
+    setSubmitting(true);
     e.preventDefault();
     try {
       const teamsRef = collection(db, "teams");
@@ -36,6 +39,7 @@ const Step4 = (props) => {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
+        setSubmitting(false);
         setAlready(true);
         return;
       }
@@ -98,173 +102,180 @@ const Step4 = (props) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.Step1}>
-      <h2>Review Your Information</h2>
-      <p>You can Edit Info By Click On Relevant Info.</p>
-      <div className={styles.Step4}>
-        <div className={styles.card}>
-          <h3>Society Info</h3>
-          <p className={styles.p}>
-            School Name:
-            <input
-              type="text"
-              name="schoolName"
-              value={formData.schoolName}
-              onChange={handleInputChange}
-            />
-          </p>
-          <p className={styles.p}>
-            Society Email:
-            <input
-              type="text"
-              name="societyEmail"
-              value={formData.societyEmail}
-              onChange={handleInputChange}
-            />
-          </p>
-          <p className={styles.p}>
-            Teacher In Charge:
-            <input
-              type="text"
-              name="teacherInCharge"
-              value={formData.teacherInCharge}
-              onChange={handleInputChange}
-            />
-          </p>
-          <p className={styles.p}>
-            Contact (Teacher In Charge):
-            <input
-              type="text"
-              pattern="0[0-9]{9}"
-              name="ticContactNumber"
-              value={formData.ticContactNumber}
-              onChange={handleInputChange}
-            />
-          </p>
-          <p className={styles.p}>
-            President:
-            <input
-              type="text"
-              name="presidentName"
-              value={formData.presidentName}
-              onChange={handleInputChange}
-            />
-          </p>
-          <p className={styles.p}>
-            Contact (President):
-            <input
-              type="text"
-              name="presidentContactNumber"
-              pattern="0[0-9]{9}"
-              value={formData.presidentContactNumber}
-              onChange={handleInputChange}
-            />
-          </p>
-          <p className={styles.p}>
-            Language:
-            <span className={styles.note1}>*[3]</span>
-            <input
-              type="text"
-              name="language"
-              value={formData.language}
-              onChange={handleInputChange}
-            />
-          </p>
-        </div>
-        <div className={styles.card}>
-          <h3>Team Info</h3>
-          <p className={styles.p}>
-            Selected Team: <span className={styles.note1}>*[4]</span>
-            <input
-              type="text"
-              name="selectedTeam"
-              value={selectedTeam}
-              onChange={handleInputChange}
-            />
-          </p>
-          {members.map((member, index) => (
-            <li key={index} type="none">
+      {submitting ? (
+        <Loading txt="Submitting Data ..." />
+      ) : (
+        <>
+          <h2>Review Your Information</h2>
+          <p>You can Edit Info By Click On Relevant Info.</p>
+          <div className={styles.Step4}>
+            <div className={styles.card}>
+              <h3>Society Info</h3>
               <p className={styles.p}>
-                {index + 1} Member
+                School Name:
                 <input
                   type="text"
-                  name="name"
-                  value={member.name}
-                  onChange={(e) => handleInputChange(e, index)}
-                />
-                <input
-                  type="text"
-                  name="whatsappNumber"
-                  pattern="0[0-9]{9}"
-                  value={member.whatsappNumber}
-                  onChange={(e) => handleInputChange(e, index)}
+                  name="schoolName"
+                  value={formData.schoolName}
+                  onChange={handleInputChange}
                 />
               </p>
-            </li>
-          ))}
-        </div>
-        <div className={styles.card}>
-          <h3>Exam Center</h3>
-          <p className={styles.p}>
-            <span className={styles.note1}>*[5]</span>
-            <input
-              type="text"
-              name="selectedCenter"
-              value={selectedCenter}
-              onChange={handleInputChange}
-            />
-          </p>
-        </div>
-      </div>
-      {already === true && (
-        <div className={styles.already}>
-          <h2>Data already exists!</h2>
-          <p>
-            Data for this school and team already exists. If the team (A/B/C) is
-            wrong, correct and resubmit. Otherwise, contact us via WhatsApp.
-            <ul>
-              <li>
-                <a
-                  href="https://wa.me/94706162457"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ginura Buddila (President)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/94714558808"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Suyama Janidu
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/94702439643"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Sethum Hansana
-                </a>
-              </li>{" "}
-              <li>
-                <a
-                  href="https://wa.me/94710362934"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Vimeth Damhiru
-                </a>
-              </li>
-            </ul>
-          </p>
-        </div>
+              <p className={styles.p}>
+                Society Email:
+                <input
+                  type="text"
+                  name="societyEmail"
+                  value={formData.societyEmail}
+                  onChange={handleInputChange}
+                />
+              </p>
+              <p className={styles.p}>
+                Teacher In Charge:
+                <input
+                  type="text"
+                  name="teacherInCharge"
+                  value={formData.teacherInCharge}
+                  onChange={handleInputChange}
+                />
+              </p>
+              <p className={styles.p}>
+                Contact (Teacher In Charge):
+                <input
+                  type="text"
+                  pattern="0[0-9]{9}"
+                  name="ticContactNumber"
+                  value={formData.ticContactNumber}
+                  onChange={handleInputChange}
+                />
+              </p>
+              <p className={styles.p}>
+                President:
+                <input
+                  type="text"
+                  name="presidentName"
+                  value={formData.presidentName}
+                  onChange={handleInputChange}
+                />
+              </p>
+              <p className={styles.p}>
+                Contact (President):
+                <input
+                  type="text"
+                  name="presidentContactNumber"
+                  pattern="0[0-9]{9}"
+                  value={formData.presidentContactNumber}
+                  onChange={handleInputChange}
+                />
+              </p>
+              <p className={styles.p}>
+                Language:
+                <span className={styles.note1}>*[3]</span>
+                <input
+                  type="text"
+                  name="language"
+                  value={formData.language}
+                  onChange={handleInputChange}
+                />
+              </p>
+            </div>
+            <div className={styles.card}>
+              <h3>Team Info</h3>
+              <p className={styles.p}>
+                Selected Team: <span className={styles.note1}>*[4]</span>
+                <input
+                  type="text"
+                  name="selectedTeam"
+                  value={selectedTeam}
+                  onChange={handleInputChange}
+                />
+              </p>
+              {members.map((member, index) => (
+                <li key={index} type="none">
+                  <p className={styles.p}>
+                    {index + 1} Member
+                    <input
+                      type="text"
+                      name="name"
+                      value={member.name}
+                      onChange={(e) => handleInputChange(e, index)}
+                    />
+                    <input
+                      type="text"
+                      name="whatsappNumber"
+                      pattern="0[0-9]{9}"
+                      value={member.whatsappNumber}
+                      onChange={(e) => handleInputChange(e, index)}
+                    />
+                  </p>
+                </li>
+              ))}
+            </div>
+            <div className={styles.card}>
+              <h3>Exam Center</h3>
+              <p className={styles.p}>
+                <span className={styles.note1}>*[5]</span>
+                <input
+                  type="text"
+                  name="selectedCenter"
+                  value={selectedCenter}
+                  onChange={handleInputChange}
+                />
+              </p>
+            </div>
+          </div>
+          {already === true && (
+            <div className={styles.already}>
+              <h2>Data already exists!</h2>
+              <p>
+                Data for this school and team already exists. If the team
+                (A/B/C) is wrong, correct and resubmit. Otherwise, contact us
+                via WhatsApp.
+                <ul>
+                  <li>
+                    <a
+                      href="https://wa.me/94706162457"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Ginura Buddila (President)
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://wa.me/94714558808"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Suyama Janidu
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://wa.me/94702439643"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Sethum Hansana
+                    </a>
+                  </li>{" "}
+                  <li>
+                    <a
+                      href="https://wa.me/94710362934"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Vimeth Damhiru
+                    </a>
+                  </li>
+                </ul>
+              </p>
+            </div>
+          )}
+          <button type="submit">
+            Submit <span className={styles.note}>*[3]</span>
+          </button>{" "}
+        </>
       )}
-      <button type="submit">
-        Submit <span className={styles.note}>*[3]</span>
-      </button>
     </form>
   );
 };

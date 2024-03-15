@@ -14,7 +14,7 @@ export default function Home() {
     SchoolLogo: null,
     SkyLogo: null,
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(1);
 
   useEffect(() => {
     const fetchAndStoreImage = async (imageUrl, sessionStorageKey) => {
@@ -37,9 +37,9 @@ export default function Home() {
     fetchAndStoreImage("assets/Particals.png", "Particals");
     fetchAndStoreImage("assets/School-Logo.png", "SchoolLogo");
     fetchAndStoreImage("assets/Sky%20Logo.png", "SkyLogo");
-
+    setLoading(2);
     setTimeout(() => {
-      setLoading(false);
+      setLoading(3);
     }, 1500);
   }, []);
 
@@ -73,9 +73,12 @@ export default function Home() {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      {loading ? (
+      {loading === 1 || loading === 2 ? (
         <Loading txt="Loading Assets ..." />
       ) : (
+        ""
+      )}
+      {loading === 2 || loading === 3 ? (
         <>
           <main>
             <section className={styles.section}>
@@ -116,6 +119,8 @@ export default function Home() {
           </main>
           <Footer />
         </>
+      ) : (
+        ""
       )}
     </>
   );

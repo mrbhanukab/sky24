@@ -17,7 +17,7 @@ export default function Step1(props) {
   });
   const [options, setOptions] = useState([]);
   const [value, setValue] = useState(null);
-
+  const [add, setAdd] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const schoolsRef = collection(db, "teams");
@@ -49,6 +49,7 @@ export default function Step1(props) {
     const newOption = { value: inputValue, label: inputValue };
     setOptions([...options, newOption]);
     setValue(newOption);
+    setAdd(true);
     setFormData({
       ...formData,
       schoolName: inputValue,
@@ -75,6 +76,7 @@ export default function Step1(props) {
         schoolsRef,
         where("formData.schoolName", "==", schoolName)
       );
+      setAdd(false);
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         const data = doc.data().formData;
@@ -83,6 +85,10 @@ export default function Step1(props) {
           schoolName: data.schoolName,
           schoolAddress: data.schoolAddress,
           societyEmail: data.societyEmail,
+          teacherInCharge: data.teacherInCharge,
+          ticContactNumber: data.ticContactNumber,
+          presidentName: data.presidentName,
+          presidentContactNumber: data.presidentContactNumber,
         });
       });
     }
@@ -97,64 +103,79 @@ export default function Step1(props) {
         onCreateOption={handleCreate}
         options={options}
         value={value}
-        formatCreateLabel={(inputValue) => `Add School "${inputValue}"`}
+        formatCreateLabel={(inputValue) => `Add School "${inputValue}" `}
         className="react-select-container"
         classNamePrefix="react-select"
-        placeholder="Select or Type Your School Name & Click Add"
+        placeholder="Type Your School Name, Search & Click Add or Select"
       />
-      <input
-        type="text"
-        placeholder="School Address"
-        name="schoolAddress"
-        value={formData.schoolAddress}
-        onChange={handleInputChange}
-        required
-      />
-      <input
-        type="email"
-        required
-        placeholder="Society Email"
-        autoComplete="email"
-        name="societyEmail"
-        value={formData.societyEmail}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        required
-        placeholder="Teacher In Charge"
-        name="teacherInCharge"
-        value={formData.teacherInCharge}
-        onChange={handleInputChange}
-      />
-      <input
-        type="tel"
-        required
-        placeholder="Contact Number of T.I.C."
-        autoComplete="tel"
-        pattern="0[0-9]{9}"
-        name="ticContactNumber"
-        value={formData.ticContactNumber}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        required
-        placeholder="President Name"
-        name="presidentName"
-        value={formData.presidentName}
-        onChange={handleInputChange}
-      />
-      <input
-        type="tel"
-        required
-        placeholder="Contact Number of President"
-        autoComplete="tel"
-        pattern="0[0-9]{9}"
-        name="presidentContactNumber"
-        value={formData.presidentContactNumber}
-        onChange={handleInputChange}
-      />
+      <p className={styles.p1}>
+        If you've already submitted your data, simply type your school name and
+        select it from the dropdown. We'll automatically assign previously
+        submitted information about your school and society. If you're
+        registering for the{" "}
+        <b>first time, please type your school name and click 'Add School.'</b>{" "}
+        Following that, you'll need to input your school and society data.
+      </p>
+      {add ? (
+        <>
+          {" "}
+          <input
+            type="text"
+            placeholder="School Address"
+            name="schoolAddress"
+            value={formData.schoolAddress}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="email"
+            required
+            placeholder="Society Email"
+            autoComplete="email"
+            name="societyEmail"
+            value={formData.societyEmail}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            required
+            placeholder="Teacher In Charge"
+            name="teacherInCharge"
+            value={formData.teacherInCharge}
+            onChange={handleInputChange}
+          />
+          <input
+            type="tel"
+            required
+            placeholder="Contact Number of T.I.C."
+            autoComplete="tel"
+            pattern="0[0-9]{9}"
+            name="ticContactNumber"
+            value={formData.ticContactNumber}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            required
+            placeholder="President Name"
+            name="presidentName"
+            value={formData.presidentName}
+            onChange={handleInputChange}
+          />
+          <input
+            type="tel"
+            required
+            placeholder="Contact Number of President"
+            autoComplete="tel"
+            pattern="0[0-9]{9}"
+            name="presidentContactNumber"
+            value={formData.presidentContactNumber}
+            onChange={handleInputChange}
+          />
+        </>
+      ) : (
+        ""
+      )}
       <select
         name="language"
         value={formData.language}

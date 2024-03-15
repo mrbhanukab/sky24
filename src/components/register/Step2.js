@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "@/styles/register.module.css";
-import Select from "react-select";
 
 export default function Step2(props) {
-  const [selectedTeam, setSelectedTeam] = useState("A");
+  const [selectedTeam, setSelectedTeam] = useState("");
   const [members, setMembers] = useState([
     { name: "", whatsappNumber: "" },
     { name: "", whatsappNumber: "" },
@@ -12,8 +11,8 @@ export default function Step2(props) {
     { name: "", whatsappNumber: "" },
   ]);
 
-  const handleTeamSelect = (selectedOption) => {
-    setSelectedTeam(selectedOption.value);
+  const handleTeamSelect = (event) => {
+    setSelectedTeam(event.target.value);
   };
 
   const handleMemberChange = (index, field, value) => {
@@ -32,28 +31,21 @@ export default function Step2(props) {
   return (
     <form onSubmit={handleSubmit} className={styles.Step1}>
       <h2>2. Team info</h2>
-      <Select
-        options={[
-          { value: "A", label: "Team A" },
-          { value: "B", label: "Team B" },
-          { value: "C", label: "Team C" },
-        ]}
-        value={{ value: selectedTeam, label: `Team ${selectedTeam}` }}
-        onChange={handleTeamSelect}
-        placeholder="Select a Team"
-        required
-        className="react-select-container"
-        classNamePrefix="react-select"
-      />
+      <select value={selectedTeam} onChange={handleTeamSelect} required>
+        <option value="">Select a Team</option>
+        <option value="A">Team A</option>
+        <option value="B">Team B</option>
+        <option value="C">Team C</option>
+      </select>
       {members.map((member, index) => (
         <div key={index} className={styles.twoCol}>
           <input
             type="text"
             autoFocus
-            placeholder={`${index + 1}${index < 2 ? "st" : "th"} Member Name`}
+            placeholder={`${index + 1}st Member Name`}
             value={member.name}
             onChange={(e) => handleMemberChange(index, "name", e.target.value)}
-            required={index < 2} // Make first two inputs required
+            {...(index < 2 ? { required: true } : {})}
           />
           <input
             type="tel"
@@ -64,7 +56,7 @@ export default function Step2(props) {
             onChange={(e) =>
               handleMemberChange(index, "whatsappNumber", e.target.value)
             }
-            required={index < 2} // Make first two inputs required
+            {...(index < 2 ? { required: true } : {})}
           />
         </div>
       ))}

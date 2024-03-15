@@ -1,6 +1,6 @@
 
 - The quiz competition will have three rounds: the 1st round, 2nd round and the final round.
-- The first round will take place at four venues across the island on **16th March 2024.** The venues are:
+- The first round will take place at four venues across the island on **30th March 2024.** The venues are:
     1. Colombo: Isipathana College
     2. Kandy: St.Sylvester's College
     3. Anuradhapura: Anuradhapura Central College
