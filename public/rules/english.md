@@ -18,3 +18,4 @@
 - The minimum number of participants per team is two. However, no extra time will be given in such cases.
 - If a team has a doubt about any question, they can discuss it with the judges within 24 hours after the question paper is released. The judges' decisions after that time period will be final.
 - The rules and regulations for the second round and the final round will be updated after the first round is completed.
+- Registration will be closing on March 24 at 23:59.
