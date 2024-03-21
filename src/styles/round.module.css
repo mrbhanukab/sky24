@@ -21,6 +21,33 @@
   }
 }
 
+.first {
+  background-color: #f28482 !important;
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 1369px) {
+    order: 2;
+    width: 25rem !important;
+    height: 15rem !important;
+  }
+}
+
+.second {
+  background-color: #f5cac3 !important;
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 1369px) {
+    order: 1;
+    height: 12rem !important;
+  }
+}
+
+.third {
+  background-color: #f7ede2 !important;
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 1369px) {
+    order: 3;
+  }
+}
+
 .finalTeamsContainer {
   display: flex;
   flex-direction: row;
@@ -28,12 +55,15 @@
   justify-content: space-around;
   align-content: center;
   margin-top: 7vh;
+  @media only screen and (min-width: 1369px) {
+    align-items: flex-end !important;
+  }
 }
 
 .finalTeamCard {
-  background-color: var(--white);
   color: var(--black);
   width: 20rem;
+  height: 9rem;
   padding: 2.5em;
   margin: 1em;
   border-radius: 1rem;
@@ -42,9 +72,31 @@
   align-items: center;
 }
 
+.finalTeamCard h2 {
+  text-wrap:stable;
+}
+
+.details{
+  margin-left: 1.5em;
+}
+
 .place {
   font-family: "Anta" !important;
   font-size: 3rem !important;
+}
+
+@media only screen and (min-width: 1369px) {
+  .first .place {
+    font-size: 4rem !important;
+  }
+
+  .first h2 {
+    font-size: 2rem !important;
+  }
+
+  .first p {
+    font-size: 1.5rem !important;
+  }
 }
 
 .mainContainer h1 {

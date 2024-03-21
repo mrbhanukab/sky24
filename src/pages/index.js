@@ -49,8 +49,21 @@ export default function Home() {
         <title> SKY`24 | Home</title>
         <meta
           name="description"
-          content="Sky24, A Quiz Competition Hosted by ICAS"
+          content="Welcome to Sky24, your gateway to thrilling quiz competitions hosted by ICAS. Dive into the world of knowledge and excitement as you challenge your intellect against competitors from around the globe. Join us on a journey where curiosity meets competition."
         />
+        <meta property="og:title" content="SKY`24 | Home" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://sky24-icas.web.app" />
+        <meta
+          property="og:description"
+          content="Welcome to Sky24, your gateway to thrilling quiz competitions hosted by ICAS. Dive into the world of knowledge and excitement as you challenge your intellect against competitors from around the globe. Join us on a journey where curiosity meets competition."
+        />
+        <meta
+          name="keywords"
+          content="Isipathana College, Isipathana College Astronomy Society (ICAS), Sri Lanka Astronomy, Astronomy Education, Sky Observation, ICAS SKY Program, ICAS SKY24, Sky24 Telescope, Sri Lankan Astronomy Clubs, Colombo Astronomy, Isipathana College astronomy club activities, Learn astronomy in Sri Lanka, How to observe the sky in Sri Lanka, Sri Lankan astrophotography, Upcoming astronomy events in Sri Lanka"
+        />
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link

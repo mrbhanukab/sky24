@@ -14,6 +14,9 @@ export default function Custom404() {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    setTimeout(() => {
+      window.location.replace("/");
+    }, 4000);
   }, []);
 
   return (
@@ -56,8 +59,8 @@ export default function Custom404() {
               Oops! It seems like you've ventured into uncharted cosmic
               territory. Fear not, fellow explorer!{" "}
               <b>
-                Let us guide you back to our cosmic hub, where the wonders of
-                the universe await.
+                Let us guide you back(within 5sec) to our cosmic hub, where the
+                wonders of the universe await.
               </b>{" "}
               Prepare for re-entry as we redirect you to our cosmic spaceship,
               ensuring your journey among the stars continues without
@@ -65,7 +68,7 @@ export default function Custom404() {
             </p>
             <div className={styles.btnGroup}>
               <Link className={styles.btn} href="/">
-                Redirect Me
+                Redirect Me Now
               </Link>
             </div>
           </div>

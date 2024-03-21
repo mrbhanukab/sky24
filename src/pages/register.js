@@ -30,8 +30,21 @@ export default function Register() {
         <title> SKY24 | Register</title>
         <meta
           name="description"
-          content="Sky24, A Quiz Competition Hosted by ICAS"
+          content="Register for Sky24 quiz competitions hosted by ICAS and embark on a quest for glory. Sign up now to showcase your skills, test your knowledge, and compete for exciting rewards. Don't miss your chance to become a part of the ultimate intellectual showdown."
         />
+        <meta property="og:title" content="SKY`24 | Register" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://sky24-icas.web.app/register" />
+        <meta
+          property="og:description"
+          content="Register for Sky24 quiz competitions hosted by ICAS and embark on a quest for glory. Sign up now to showcase your skills, test your knowledge, and compete for exciting rewards. Don't miss your chance to become a part of the ultimate intellectual showdown."
+        />
+        <meta
+          name="keywords"
+          content="Isipathana College, Isipathana College Astronomy Society (ICAS), Sri Lanka Astronomy, Astronomy Education, Sky Observation, ICAS SKY Program, ICAS SKY24, Sky24 Telescope, Sri Lankan Astronomy Clubs, Colombo Astronomy, Isipathana College astronomy club activities, Learn astronomy in Sri Lanka, How to observe the sky in Sri Lanka, Sri Lankan astrophotography, Upcoming astronomy events in Sri Lanka"
+        />
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function First() {
   // const [schools, setSchools] = useState(0);
 
-
   return (
     <>
       <h1>FIRST ROUND RESULT ...</h1>
@@ -19,11 +18,10 @@ export default function First() {
         thrilling voyage toward celestial triumph!
       </p>
       <div className={styles.btnGroup}>
-        <Link className={styles.btn} href="/firstRound">
+        <Link className={styles.btn} href="/round/firstRound">
           First Round Results
         </Link>
       </div>
-
     </>
   );
 }

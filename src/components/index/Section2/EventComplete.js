@@ -13,7 +13,7 @@ export default function EventComplete() {
         prepare for a celestial showdown like no other!
       </p>
       <div className={styles.btnGroup}>
-        <Link className={styles.btn} href="/firstRound">
+        <Link className={styles.btn} href="/round/finalRound">
           Final Round Results
         </Link>
       </div>

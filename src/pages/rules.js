@@ -56,8 +56,10 @@ export default function Rules() {
         <title>SKY`24 | Rules & Regulations</title>
         <meta
           name="description"
-          content="Sky24, A Quiz Competition Hosted by ICAS"
+          content="Discover the guidelines and regulations governing Sky24 quiz competitions hosted by ICAS. Familiarize yourself with the rules of engagement, fair play standards, and eligibility criteria. Join us in upholding the spirit of friendly competition while striving for excellence."
         />
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -77,6 +79,17 @@ export default function Rules() {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="SKY`24 | Rules & Regulations" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://sky24-icas.web.app/rules/" />
+        <meta
+          property="og:description"
+          content="Discover the guidelines and regulations governing Sky24 quiz competitions hosted by ICAS. Familiarize yourself with the rules of engagement, fair play standards, and eligibility criteria. Join us in upholding the spirit of friendly competition while striving for excellence."
+        />
+        <meta
+          name="keywords"
+          content="Isipathana College, Isipathana College Astronomy Society (ICAS), Sri Lanka Astronomy, Astronomy Education, Sky Observation, ICAS SKY Program, ICAS SKY24, Sky24 Telescope, Sri Lankan Astronomy Clubs, Colombo Astronomy, Isipathana College astronomy club activities, Learn astronomy in Sri Lanka, How to observe the sky in Sri Lanka, Sri Lankan astrophotography, Upcoming astronomy events in Sri Lanka"
+        />
       </Head>
       {loading ? (
         <Loading txt={languageFiles[language].loadingText} />

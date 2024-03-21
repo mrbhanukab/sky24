@@ -15,9 +15,20 @@ export default function FinalRound({ finalTeams, otherTeams }) {
         </p>
         <div className={styles.finalTeamsContainer}>
           {finalTeams.map((team, index) => (
-            <div key={index} className={styles.finalTeamCard}>
-              <p className={styles.place}>{team.final}</p>
-              <div>
+            <div
+              key={index}
+              className={`${styles.finalTeamCard} ${
+                team.final === 1
+                  ? styles.first
+                  : team.final === 2
+                  ? styles.second
+                  : team.final === 3
+                  ? styles.third
+                  : ""
+              }`}
+            >
+              <p className={styles.place}>{team.final}.</p>
+              <div className={styles.details}>
                 <h2>{team.formData.schoolName}</h2>
                 <p>Team: {team.selectedTeam}</p>
               </div>

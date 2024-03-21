@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { db } from "@/components/firebase";
 import styles from "@/styles/round.module.css";
 import Footer from "@/components/Footer";
@@ -17,6 +24,7 @@ export default function Round() {
   const [finalTeams, setFinalTeams] = useState([]);
   const [otherTeams, setOtherTeams] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,8 +59,29 @@ export default function Round() {
       }, 1200); // Set loading to false once data fetching is done
     };
 
+    const getStatusFromFirestore = async () => {
+      try {
+        const docRef = doc(db, "system", "settings");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setTimeout(() => {
+            if (data.status < 4) {
+              window.location.replace("/404");
+            }
+          }, 1000);
+          setStatus(data.status);
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error getting document:", error);
+      }
+    };
+
     if (id) {
       fetchData();
+      getStatusFromFirestore();
     }
   }, [id]);
 
@@ -70,9 +99,9 @@ export default function Round() {
       </Head>
       {loading ? (
         <Loading txt="Fetching Data ..." />
-      ) : id === "firstRound" ? (
+      ) : id === "firstRound" && status > 4 w update? (
         <FirstRound teams={teams} />
-      ) : id === "finalRound" ? (
+      ) : id === "finalRound" && status > 6 ? (
         <FinalRound finalTeams={finalTeams} otherTeams={otherTeams} />
       ) : (
         <div className={styles.mainContainer}>Somthing Went Wrong ...</div>

@@ -18,7 +18,7 @@ export default function Final() {
         stars!
       </p>
       <div className={styles.btnGroup}>
-        <Link className={styles.btn} href="/finalRound">
+        <Link className={styles.btn} href="/round/finalRound">
           Final Round Results
         </Link>
       </div>
