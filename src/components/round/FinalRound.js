@@ -1,6 +1,38 @@
+import { useState } from "react";
 import styles from "@/styles/round.module.css";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "@/components/firebase";
 
 export default function FinalRound({ finalTeams, otherTeams }) {
+  const [presidentContactNumber, setPresidentContactNumber] = useState("");
+  const [selectedTeam, setSelectedTeam] = useState("");
+  const [finalRoundMarks, setFinalRoundMarks] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const teamsRef = collection(db, "teams");
+      const q = query(
+        teamsRef,
+        where("formData.presidentContactNumber", "==", presidentContactNumber),
+        where("selectedTeam", "==", selectedTeam)
+      );
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const teamDoc = querySnapshot.docs[0].data();
+        const finalRoundMarks = teamDoc.finalround || {};
+        setFinalRoundMarks(Object.entries(finalRoundMarks));
+      } else {
+        alert("No matching record found!");
+      }
+    } catch (error) {
+      console.error("Error retrieving data:", error);
+      alert("Error retrieving data. Please try again later.");
+    }
+  };
+
   return (
     <>
       <main className={styles.mainContainer}>
@@ -54,6 +86,40 @@ export default function FinalRound({ finalTeams, otherTeams }) {
             ))}
           </tbody>
         </table>
+        <form className={styles.ext} onSubmit={handleSubmit}>
+          <input
+            type="tel"
+            placeholder="Type Your President's Phone Number"
+            pattern="0[0-9]{9}"
+            autoComplete="tel"
+            value={presidentContactNumber}
+            onChange={(e) => setPresidentContactNumber(e.target.value)}
+            required
+          />
+          <select
+            value={selectedTeam}
+            onChange={(e) => setSelectedTeam(e.target.value)}
+            required
+          >
+            <option value="">Select a Team</option>
+            <option value="A">Team A</option>
+            <option value="B">Team B</option>
+            <option value="C">Team C</option>
+          </select>
+          <button type="submit">Show Extended Results Sheet</button>
+        </form>
+        {finalRoundMarks.length > 0 && (
+          <div>
+            <h2>Final Round Marks</h2>
+            <ul>
+              {finalRoundMarks.map(([subject, marks]) => (
+                <li key={subject}>
+                  {subject}: {marks}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </main>
     </>
   );

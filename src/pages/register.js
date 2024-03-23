@@ -3,6 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import styles from "@/styles/register.module.css";
 import Loading from "@/components/Loading";
+import Footer from "@/components/Footer";
 
 const Step1 = dynamic(() => import("@/components/register/Step1"));
 const Step2 = dynamic(() => import("@/components/register/Step2"));
@@ -110,6 +111,7 @@ export default function Register() {
           </div>
         </>
       )}
+      <Footer />
     </>
   );
 }

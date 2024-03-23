@@ -5,8 +5,11 @@ import Loading from "@/components/Loading";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import styles from "@/styles/index.module.css";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/components/firebase";
 
 const Section2 = dynamic(() => import("@/components/index/Section2"));
+const Ads = dynamic(() => import("@/components/Ads"));
 
 export default function Home() {
   const [images, setImages] = useState({
@@ -15,8 +18,25 @@ export default function Home() {
     SkyLogo: null,
   });
   const [loading, setLoading] = useState(1);
+  const [adsData, setAdsData] = useState(null);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const adsDocRef = doc(db, "system", "Ads");
+        const adsDocSnap = await getDoc(adsDocRef);
+        if (adsDocSnap.exists()) {
+          const data = adsDocSnap.data();
+          setAdsData(data);
+          console.log(data);
+        } else {
+          console.log("No ads data found!");
+        }
+      } catch (error) {
+        console.error("Error fetching ads data:", error);
+      }
+    };
+
     const fetchAndStoreImage = async (imageUrl, sessionStorageKey) => {
       try {
         const response = await fetch(imageUrl);
@@ -37,6 +57,7 @@ export default function Home() {
     fetchAndStoreImage("assets/Particals.png", "Particals");
     fetchAndStoreImage("assets/School-Logo.png", "SchoolLogo");
     fetchAndStoreImage("assets/Sky%20Logo.png", "SkyLogo");
+    fetchData();
     setLoading(2);
     setTimeout(() => {
       setLoading(3);
@@ -128,6 +149,7 @@ export default function Home() {
               <p className={styles.text}>Scroll Down ↓</p>
             </section>
             <Section2 />
+            {adsData && adsData.display ? <Ads adsData={adsData} /> : null}
             <Section3 />
           </main>
           <Footer />

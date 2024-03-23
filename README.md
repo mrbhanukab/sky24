@@ -1,3 +1,16 @@
+<html>
+<h1 style="color:red;">Ultimate version | v4.0.0 has Released 👐</h1>
+<h3>Now it is a CMS, not just a Regular Site.</h3>
+<ul>
+<li>Removed 56 unused packages and audited 475 packages</li>
+<li>New Admin Dashboard Page</li>
+<li>New Viewer Dashboard Page</li>
+<li>99% Fully Customizable Advertisement Component</li>
+<li>Add Footer to Registration Page</li>
+<li>Optimize Entire CMS</li>
+</ul>
+</html>
+
 # Sky24 Astronomy Quiz Website
 
 Welcome to the Sky24 GitHub repository! This project is developed for the Astronomy Quiz "SKY24" organized by ICAS. It's designed to provide a seamless experience for users to register for the event, check its status, and view the results.
@@ -17,7 +30,8 @@ In this latest update, we've introduced several enhancements to improve the user
 - **Preloading Resources**: Images and markdown files are now downloaded first while loading the homepage and rules page, respectively, ensuring faster load times.
 - **Footer Component**: Added a footer component for improved navigation and accessibility.
 - **Smoother Loading Effect**: Implemented a smoother loading effect for a more seamless user experience.
-
+- **Admin Page**
+- **90% Fully Customizable Advertistment Component**
 ## Setup Instructions
 
 To get started with Sky24, follow these simple steps:
@@ -32,9 +46,3 @@ To get started with Sky24, follow these simple steps:
 8. **Build Site**: Once you're done, build the site using `npm run build`.
 9. **Host Site**: Deploy the site using Firebase hosting with the command `firebase deploy --only hosting:sky24-icas`.
 10. **Don't Forget to Commit Your Changes**! 🥲
-
-## Features to Implement Next
-
-Here are some features we plan to implement in future updates:
-
-- **Round Information**: Create a new document on Firebase to store round information and integrate it into the round page for easier management.

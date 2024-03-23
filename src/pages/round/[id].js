@@ -65,11 +65,11 @@ export default function Round() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          setTimeout(() => {
-            if (data.status < 4) {
-              window.location.replace("/404");
-            }
-          }, 1000);
+          // setTimeout(() => {
+          //   if (data.status < 4) {
+          //     window.location.replace("/404");
+          //   }
+          // }, 1000);
           setStatus(data.status);
         } else {
           console.log("No such document!");
@@ -80,8 +80,8 @@ export default function Round() {
     };
 
     if (id) {
-      fetchData();
       getStatusFromFirestore();
+      fetchData();
     }
   }, [id]);
 
@@ -99,9 +99,9 @@ export default function Round() {
       </Head>
       {loading ? (
         <Loading txt="Fetching Data ..." />
-      ) : id === "firstRound" && status > 4 w update? (
+      ) : id === "firstRound"  ? (
         <FirstRound teams={teams} />
-      ) : id === "finalRound" && status > 6 ? (
+      ) : id === "finalRound"  ? (
         <FinalRound finalTeams={finalTeams} otherTeams={otherTeams} />
       ) : (
         <div className={styles.mainContainer}>Somthing Went Wrong ...</div>
