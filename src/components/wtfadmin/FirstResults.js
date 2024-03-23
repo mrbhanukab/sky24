@@ -64,7 +64,6 @@ const FirstResults = ({ onClose, data }) => {
         location.reload();
         onClose(); // Close the modal or perform any other actions
       } catch (error) {
-        console.error("Error updating data:", error);
         alert("Error updating data. Please try again later.");
       }
     }

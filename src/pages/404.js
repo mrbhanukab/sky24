@@ -13,7 +13,7 @@ export default function Custom404() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 800);
     setTimeout(() => {
       window.location.replace("/");
     }, 4000);
@@ -32,19 +32,19 @@ export default function Custom404() {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-touch-icon.png"
+          href="/apple-touch-icon.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="32x32"
-          href="/favicon-32x32.png"
+          href="/favicon-32x32.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="16x16"
-          href="/favicon-16x16.png"
+          href="/favicon-16x16.webp"
         />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

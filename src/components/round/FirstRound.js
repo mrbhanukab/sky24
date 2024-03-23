@@ -28,7 +28,6 @@ export default function FirstRound({ teams }) {
         alert("No matching record found!");
       }
     } catch (error) {
-      console.error("Error retrieving data:", error);
       alert("Error retrieving data. Please try again later.");
     }
   };

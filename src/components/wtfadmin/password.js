@@ -29,7 +29,7 @@ const Password = ({ func }) => {
         func("error");
       }
     } catch (error) {
-      console.error("Error getting document:", error);
+      alert("Error getting document. Slow Internet?");
       func("error");
     }
   };

@@ -28,12 +28,9 @@ export default function Home() {
         if (adsDocSnap.exists()) {
           const data = adsDocSnap.data();
           setAdsData(data);
-          console.log(data);
-        } else {
-          console.log("No ads data found!");
         }
       } catch (error) {
-        console.error("Error fetching ads data:", error);
+        alert("Error fetching data. Slow Internet?");
       }
     };
 
@@ -50,18 +47,18 @@ export default function Home() {
           }));
         });
       } catch (error) {
-        console.error("Error fetching or reading the image:", error);
+        alert("Error fetching or reading the image. Slow Internet?");
       }
     };
 
-    fetchAndStoreImage("assets/Particals.png", "Particals");
-    fetchAndStoreImage("assets/School-Logo.png", "SchoolLogo");
-    fetchAndStoreImage("assets/Sky%20Logo.png", "SkyLogo");
+    fetchAndStoreImage("assets/Particals.webp", "Particals");
+    fetchAndStoreImage("assets/School-Logo.webp", "SchoolLogo");
+    fetchAndStoreImage("assets/Sky%20Logo.webp", "SkyLogo");
     fetchData();
     setLoading(2);
     setTimeout(() => {
       setLoading(3);
-    }, 1500);
+    }, 800);
   }, []);
 
   return (
@@ -84,25 +81,25 @@ export default function Home() {
           content="Isipathana College, Isipathana College Astronomy Society (ICAS), Sri Lanka Astronomy, Astronomy Education, Sky Observation, ICAS SKY Program, ICAS SKY24, Sky24 Telescope, Sri Lankan Astronomy Clubs, Colombo Astronomy, Isipathana College astronomy club activities, Learn astronomy in Sri Lanka, How to observe the sky in Sri Lanka, Sri Lankan astrophotography, Upcoming astronomy events in Sri Lanka"
         />
         <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="all" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-touch-icon.png"
+          href="/apple-touch-icon.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="32x32"
-          href="/favicon-32x32.png"
+          href="/favicon-32x32.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="16x16"
-          href="/favicon-16x16.png"
+          href="/favicon-16x16.webp"
         />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -123,7 +120,7 @@ export default function Home() {
                     src={images.Particals}
                     width={1000}
                     height={1000}
-                    alt="Particals.png"
+                    alt="Particals.webp"
                   />
                 )}
                 <h3>Isipathana College Astronomy Society</h3>
@@ -133,7 +130,7 @@ export default function Home() {
                     src={images.SchoolLogo}
                     width={1000}
                     height={1000}
-                    alt="School-Logo.png"
+                    alt="School-Logo.webp"
                   />
                 )}
               </div>
@@ -143,7 +140,7 @@ export default function Home() {
                   src={images.SkyLogo}
                   width={1000}
                   height={1000}
-                  alt="Sky Logo.png"
+                  alt="Sky Logo.webp"
                 />
               )}
               <p className={styles.text}>Scroll Down ↓</p>
@@ -180,7 +177,7 @@ function Section3() {
           >
             <img
               className={styles.simg}
-              src="/assets/sicons/facebook.png"
+              src="/assets/sicons/facebook.webp"
               width={100}
               height={100}
               alt="Facebook"
@@ -193,7 +190,7 @@ function Section3() {
           >
             <img
               className={styles.simg}
-              src="/assets/sicons/instgram.png"
+              src="/assets/sicons/instgram.webp"
               width={100}
               height={100}
               alt="Instagram"
@@ -206,7 +203,7 @@ function Section3() {
           >
             <img
               className={styles.simg}
-              src="/assets/sicons/youtube.png"
+              src="/assets/sicons/youtube.webp"
               width={100}
               height={100}
               alt="Youtube"

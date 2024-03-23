@@ -33,10 +33,9 @@ export default function Rules() {
         setMarkdownContent(text);
         setTimeout(() => {
           setLoading(false);
-        }, 800);
+        }, 700);
       } catch (error) {
-        console.error(error);
-        alert("Error fetching Markdown content");
+        alert("Error fetching Markdown content,Slow Internet?");
       }
     };
 
@@ -59,23 +58,23 @@ export default function Rules() {
           content="Discover the guidelines and regulations governing Sky24 quiz competitions hosted by ICAS. Familiarize yourself with the rules of engagement, fair play standards, and eligibility criteria. Join us in upholding the spirit of friendly competition while striving for excellence."
         />
         <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="all" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-touch-icon.png"
+          href="/apple-touch-icon.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="32x32"
-          href="/favicon-32x32.png"
+          href="/favicon-32x32.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="16x16"
-          href="/favicon-16x16.png"
+          href="/favicon-16x16.webp"
         />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

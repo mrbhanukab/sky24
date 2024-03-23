@@ -18,7 +18,7 @@ export default function Register() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 800);
+    }, 700);
   }, []);
 
   const pull_data = (data) => {
@@ -45,23 +45,23 @@ export default function Register() {
           content="Isipathana College, Isipathana College Astronomy Society (ICAS), Sri Lanka Astronomy, Astronomy Education, Sky Observation, ICAS SKY Program, ICAS SKY24, Sky24 Telescope, Sri Lankan Astronomy Clubs, Colombo Astronomy, Isipathana College astronomy club activities, Learn astronomy in Sri Lanka, How to observe the sky in Sri Lanka, Sri Lankan astrophotography, Upcoming astronomy events in Sri Lanka"
         />
         <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="all" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-touch-icon.png"
+          href="/apple-touch-icon.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="32x32"
-          href="/favicon-32x32.png"
+          href="/favicon-32x32.webp"
         />
         <link
           rel="icon"
-          type="image/png"
+          type="image/webp"
           sizes="16x16"
-          href="/favicon-16x16.png"
+          href="/favicon-16x16.webp"
         />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

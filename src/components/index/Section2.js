@@ -23,11 +23,9 @@ export default function Section2() {
         if (docSnap.exists()) {
           const data = docSnap.data();
           setStatus(data.status);
-        } else {
-          console.log("No such document!");
         }
       } catch (error) {
-        console.error("Error getting document:", error);
+        alert("Error getting document. Slow Internet?");
       }
     };
 

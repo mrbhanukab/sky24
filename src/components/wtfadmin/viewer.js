@@ -40,8 +40,6 @@ export default function Viewer() {
         if (statusDocSnap.exists()) {
           const statusData = statusDocSnap.data();
           setData((prevData) => ({ ...prevData, status: statusData.status }));
-        } else {
-          console.log("No status document found!");
         }
 
         const teamsQuerySnapshot = await getDocs(collection(db, "teams"));
@@ -119,7 +117,7 @@ export default function Viewer() {
           centerCounts: centerCountsObj,
         }));
       } catch (error) {
-        console.error("Error fetching data from Firestore:", error);
+        alert("Error fetching data from Firestore. Slow Internet?");
       } finally {
         setTimeout(() => {
           setLoading(false);
@@ -176,7 +174,7 @@ export default function Viewer() {
             />
           )}
           <div className={styles.content}>
-            <h1>Statistics - Admin</h1>
+            <h1>Statistics [View Only]</h1>
             <section className={styles.section}>
               <div>
                 Schools<span>{data.schoolsCount}</span>

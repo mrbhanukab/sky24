@@ -56,7 +56,7 @@ export default function Round() {
       }
       setTimeout(() => {
         setLoading(false);
-      }, 1200); // Set loading to false once data fetching is done
+      }, 800); // Set loading to false once data fetching is done
     };
 
     const getStatusFromFirestore = async () => {
@@ -65,17 +65,15 @@ export default function Round() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          // setTimeout(() => {
-          //   if (data.status < 4) {
-          //     window.location.replace("/404");
-          //   }
-          // }, 1000);
+          setTimeout(() => {
+            if (data.status < 4) {
+              window.location.replace("/404");
+            }
+          }, 500);
           setStatus(data.status);
-        } else {
-          console.log("No such document!");
         }
       } catch (error) {
-        console.error("Error getting document:", error);
+        alert("Error getting document. Slow Internet?");
       }
     };
 
@@ -96,12 +94,33 @@ export default function Round() {
           name="description"
           content="Sky24, A Quiz Competition Hosted by ICAS"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.webp"
+        />
+        <link
+          rel="icon"
+          type="image/webp"
+          sizes="32x32"
+          href="/favicon-32x32.webp"
+        />
+        <link
+          rel="icon"
+          type="image/webp"
+          sizes="16x16"
+          href="/favicon-16x16.webp"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {loading ? (
         <Loading txt="Fetching Data ..." />
-      ) : id === "firstRound"  ? (
+      ) : id === "firstRound" && status > 4 ? (
         <FirstRound teams={teams} />
-      ) : id === "finalRound"  ? (
+      ) : id === "finalRound" && status > 6 ? (
         <FinalRound finalTeams={finalTeams} otherTeams={otherTeams} />
       ) : (
         <div className={styles.mainContainer}>Somthing Went Wrong ...</div>

@@ -50,8 +50,6 @@ export default function Admin() {
         if (statusDocSnap.exists()) {
           const statusData = statusDocSnap.data();
           setData((prevData) => ({ ...prevData, status: statusData.status }));
-        } else {
-          console.log("No status document found!");
         }
 
         // Fetch teams data
@@ -143,15 +141,13 @@ export default function Admin() {
         if (adsDocSnap.exists()) {
           const adsData = adsDocSnap.data();
           setAdsData(adsData); // Assuming you have a useState for ads data
-        } else {
-          console.log("No ads document found!");
         }
       } catch (error) {
-        console.error("Error fetching data from Firestore:", error);
+        alert("Error fetching data from Firestore. Slow Internet?");
       } finally {
         setTimeout(() => {
           setLoading(false);
-        }, 1000);
+        }, 800);
       }
     };
 
@@ -198,11 +194,8 @@ export default function Admin() {
           ...prevData,
           status: statusData.status,
         }));
-      } else {
-        console.log("No status document found!");
       }
     } catch (error) {
-      console.error("Error updating status:", error);
       alert("Error updating status!");
     }
   };
@@ -221,7 +214,7 @@ export default function Admin() {
       await setDoc(adsDocRef, updatedData);
       alert("Ads data updated successfully in the database.");
     } catch (error) {
-      console.error("Error updating ads data in the database:", error);
+      alert("Error updating ads data in the database. Slow Internet?");
     }
   };
 
@@ -267,7 +260,7 @@ export default function Admin() {
             />
           )}
           <div className={styles.content}>
-            <h1>Statistics - Admin</h1>
+            <h1>Statistics [Sudo Mode]</h1>
             <section className={styles.section}>
               <div>
                 Schools<span>{data.schoolsCount}</span>
