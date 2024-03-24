@@ -17,6 +17,10 @@
         "destination": "/rules.html"
       },
       {
+        "source": "/round/**",
+        "destination": "/round/[id]/index.html"
+      },
+      {
         "source": "/",
         "destination": "/index.html"
       },
