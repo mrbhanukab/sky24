@@ -299,26 +299,28 @@ export default function Admin() {
                 </tr>
               </thead>
               <tbody>
-                {memoizedMembersData.map((member, index) => (
-                  <tr key={index}>
-                    <td>
-                      <button onClick={() => openSchoolModal(member.school)}>
-                        {member.school}
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() =>
-                          openTeamModal(member.school + member.team)
-                        }
-                      >
-                        {member.team}
-                      </button>
-                    </td>
-                    <td>{member.language}</td>
-                    <td>{member.location}</td>
-                  </tr>
-                ))}
+                {memoizedMembersData
+                  .sort((a, b) => a.school.localeCompare(b.school)) // Sort the array alphabetically based on school name
+                  .map((member, index) => (
+                    <tr key={index}>
+                      <td>
+                        <button onClick={() => openSchoolModal(member.school)}>
+                          {member.school}
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() =>
+                            openTeamModal(member.school + member.team)
+                          }
+                        >
+                          {member.team}
+                        </button>
+                      </td>
+                      <td>{member.language}</td>
+                      <td>{member.location}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
             <section className={styles.section}>

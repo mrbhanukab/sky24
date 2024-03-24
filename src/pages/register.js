@@ -107,6 +107,9 @@ export default function Register() {
                   contact us.
                 </a>
               </li>
+              <li>
+                We <b>may</b> share this information with our primary sponsor.
+              </li>
             </ol>
           </div>
         </>

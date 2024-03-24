@@ -79,7 +79,7 @@ const FinalResults = ({ onClose, data }) => {
           <tr>
             <th>Schoolname</th>
             <th>Team</th>
-            <th>Final</th>
+            <th>Rank</th>
             <th>Observation</th>
             <th>Cosmology</th>
             <th>Astro Physics</th>
@@ -88,56 +88,61 @@ const FinalResults = ({ onClose, data }) => {
           </tr>
         </thead>
         <tbody>
-          {updatedData.membersData.map((school, index) => (
-            <tr key={index}>
-              <td>{school.school}</td>
-              <td>{school.team}</td>
-              <td>
-                <input
-                  type="text"
-                  value={school.final || ""}
-                  onChange={(e) => handleInputChange(e, index, "final")}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={school.finalround?.Observation || ""}
-                  onChange={(e) => handleInputChange(e, index, "Observation")}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={school.finalround?.Cosmology || ""}
-                  onChange={(e) => handleInputChange(e, index, "Cosmology")}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={school.finalround?.AstroPhysics || ""}
-                  onChange={(e) => handleInputChange(e, index, "AstroPhysics")}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={school.finalround?.GeneralAstronomy || ""}
-                  onChange={(e) =>
-                    handleInputChange(e, index, "GeneralAstronomy")
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={school.finalround?.Rocketry || ""}
-                  onChange={(e) => handleInputChange(e, index, "Rocketry")}
-                />
-              </td>
-            </tr>
-          ))}
+          {updatedData.membersData
+            .slice() // Create a copy of the array
+            .sort((a, b) => a.school.localeCompare(b.school)) // Sort the array alphabetically based on school name
+            .map((school, index) => (
+              <tr key={index}>
+                <td>{school.school}</td>
+                <td>{school.team}</td>
+                <td>
+                  <input
+                    type="text"
+                    value={school.final || ""}
+                    onChange={(e) => handleInputChange(e, index, "final")}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={school.finalround?.Observation || ""}
+                    onChange={(e) => handleInputChange(e, index, "Observation")}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={school.finalround?.Cosmology || ""}
+                    onChange={(e) => handleInputChange(e, index, "Cosmology")}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={school.finalround?.AstroPhysics || ""}
+                    onChange={(e) =>
+                      handleInputChange(e, index, "AstroPhysics")
+                    }
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={school.finalround?.GeneralAstronomy || ""}
+                    onChange={(e) =>
+                      handleInputChange(e, index, "GeneralAstronomy")
+                    }
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={school.finalround?.Rocketry || ""}
+                    onChange={(e) => handleInputChange(e, index, "Rocketry")}
+                  />
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
       <div className={styles.btngrp}>
