@@ -57,7 +57,7 @@ export default function Rules() {
           name="description"
           content="Discover the guidelines and regulations governing Sky24 quiz competitions hosted by ICAS. Familiarize yourself with the rules of engagement, fair play standards, and eligibility criteria. Join us in upholding the spirit of friendly competition while striving for excellence."
         />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="robots" content="all" />
         <link
           rel="apple-touch-icon"

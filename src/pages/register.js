@@ -44,7 +44,7 @@ export default function Register() {
           name="keywords"
           content="Isipathana College, Isipathana College Astronomy Society (ICAS), Sri Lanka Astronomy, Astronomy Education, Sky Observation, ICAS SKY Program, ICAS SKY24, Sky24 Telescope, Sri Lankan Astronomy Clubs, Colombo Astronomy, Isipathana College astronomy club activities, Learn astronomy in Sri Lanka, How to observe the sky in Sri Lanka, Sri Lankan astrophotography, Upcoming astronomy events in Sri Lanka"
         />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="robots" content="all" />
         <link
           rel="apple-touch-icon"
