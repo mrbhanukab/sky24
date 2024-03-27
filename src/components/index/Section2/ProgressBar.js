@@ -7,7 +7,8 @@ export default function ProgressBar(props) {
       case 2:
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 2 },
-          { event: "REGISTRATION OPEN", status: 1 },
+          { event: "REGISTRATION OPEN", status: 2 },
+          { event: "REGISTRATION EXTENDED", status: 1 },
           { event: "REGISTRATION CLOSE", status: 0 },
           { event: "FIRST ROUND", status: 0 },
           { event: "RELEASE FIRST ROUND RESULTS", status: 0 },
@@ -18,6 +19,7 @@ export default function ProgressBar(props) {
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 2 },
           { event: "REGISTRATION OPEN", status: 2 },
+          { event: "REGISTRATION EXTENDED", status: 2 },
           { event: "REGISTRATION CLOSE", status: 1 },
           { event: "FIRST ROUND", status: 0 },
           { event: "RELEASE FIRST ROUND RESULTS", status: 0 },
@@ -28,6 +30,7 @@ export default function ProgressBar(props) {
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 2 },
           { event: "REGISTRATION OPEN", status: 2 },
+          { event: "REGISTRATION EXTENDED", status: 2 },
           { event: "REGISTRATION CLOSE", status: 2 },
           { event: "FIRST ROUND", status: 1 },
           { event: "RELEASE FIRST ROUND RESULTS", status: 0 },
@@ -38,6 +41,7 @@ export default function ProgressBar(props) {
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 2 },
           { event: "REGISTRATION OPEN", status: 2 },
+          { event: "REGISTRATION EXTENDED", status: 2 },
           { event: "REGISTRATION CLOSE", status: 2 },
           { event: "FIRST ROUND", status: 2 },
           { event: "RELEASE FIRST ROUND RESULTS", status: 1 },
@@ -48,6 +52,7 @@ export default function ProgressBar(props) {
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 2 },
           { event: "REGISTRATION OPEN", status: 2 },
+          { event: "REGISTRATION EXTENDED", status: 2 },
           { event: "REGISTRATION CLOSE", status: 2 },
           { event: "FIRST ROUND", status: 2 },
           { event: "RELEASE FIRST ROUND RESULTS", status: 2 },
@@ -58,6 +63,7 @@ export default function ProgressBar(props) {
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 2 },
           { event: "REGISTRATION OPEN", status: 2 },
+          { event: "REGISTRATION EXTENDED", status: 2 },
           { event: "REGISTRATION CLOSE", status: 2 },
           { event: "FIRST ROUND", status: 2 },
           { event: "RELEASE FIRST ROUND RESULTS", status: 2 },
@@ -69,6 +75,7 @@ export default function ProgressBar(props) {
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 0 },
           { event: "REGISTRATION OPEN", status: 0 },
+          { event: "REGISTRATION EXTENDED", status: 0 },
           { event: "REGISTRATION CLOSE", status: 0 },
           { event: "FIRST ROUND", status: 0 },
           { event: "RELEASE FIRST ROUND RESULTS", status: 0 },

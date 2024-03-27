@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Open() {
   return (
     <>
-      <h1>REGISTRATION OPEN ...</h1>
+      <h1>REGISTRATION EXTENDED ...</h1>
       <p>
         Attention, cosmic enthusiasts! The portal to our stellar quiz is now
         open for registration, beckoning the boldest space adventurers to embark

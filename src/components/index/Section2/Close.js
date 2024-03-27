@@ -13,7 +13,6 @@ export default function Close() {
         fierce, and only the most astute will advance to the next phase. So,
         gather your cosmic courage, adventurers, and prepare to embark on this
         thrilling expedition through the cosmos!
-        Registration will be closing on March 24 at 23:59.
       </p>
       <div className={styles.btnGroup}>
         <Link className={styles.btn} href="/rules">

@@ -300,7 +300,15 @@ export default function Admin() {
               </thead>
               <tbody>
                 {memoizedMembersData
-                  .sort((a, b) => a.school.localeCompare(b.school)) // Sort the array alphabetically based on school name
+                  .sort((a, b) => {
+                    // First, sort by school name
+                    const schoolComparison = a.school.localeCompare(b.school);
+                    if (schoolComparison !== 0) {
+                      return schoolComparison;
+                    }
+                    // If school names are the same, sort by team name
+                    return a.team.localeCompare(b.team);
+                  })
                   .map((member, index) => (
                     <tr key={index}>
                       <td>
