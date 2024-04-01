@@ -15,13 +15,15 @@ const Password = ({ func }) => {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        const { admin, viewer } = docSnap.data();
+        const { admin, viewer, check } = docSnap.data();
         const inputHash = md5(password);
 
         if (inputHash === admin) {
           func("admin");
         } else if (inputHash === viewer) {
           func("viewer");
+        } else if (inputHash === check) {
+          func("check");
         } else {
           func("error");
         }

@@ -15,9 +15,9 @@ export default function First() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          setSchools(data.participants || 0);
-          setTeams(data.school || 0);
-          setParticipants(data.teams || 0);
+          setSchools(data.school || 0);
+          setTeams(data.teams || 0);
+          setParticipants(data.participants || 0);
         } else {
           console.log("No such document!");
         }

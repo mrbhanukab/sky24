@@ -1,7 +1,14 @@
 import { useState } from "react";
 import styles from "@/styles/wtfadmin.module.css";
 
-const Modal = ({ data, onClose, type, status, onSubmitStatus }) => {
+const Modal = ({
+  data,
+  onClose,
+  type,
+  status,
+  onSubmitStatus,
+  onSubmitCheck,
+}) => {
   const [selectedStatus, setSelectedStatus] = useState(status);
 
   const handleStatusChange = (e) => {
@@ -70,6 +77,27 @@ const Modal = ({ data, onClose, type, status, onSubmitStatus }) => {
                 <strong>Member {index}:</strong> {data[`member${index}`]}
               </p>
             ))}
+          </>
+        )}
+        {type === "check" && (
+          <>
+            <h2>Are you sure?</h2>
+            <p>Did these people,</p>
+            {[1, 2, 3, 4, 5].map((index) => (
+              <p key={index}>
+                <strong>Member {index}:</strong> {data[`member${index}`]}
+              </p>
+            ))}
+            <p>
+              representing{" "}
+              <strong>
+                {data.school} {data.team}
+              </strong>{" "}
+              come? Setting check to true in the database, maybe irreversible.
+            </p>
+            <button onClick={onSubmitCheck}>
+              Yeah, they are in front of me
+            </button>
           </>
         )}
         <button onClick={onClose}>Close</button>

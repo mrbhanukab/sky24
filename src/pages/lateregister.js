@@ -28,7 +28,7 @@ export default function Register() {
   return (
     <>
       <Head>
-        <title> SKY24 | Register</title>
+        <title> SKY24 | Late Register</title>
         <meta
           name="description"
           content="Register for Sky24 quiz competitions hosted by ICAS and embark on a quest for glory. Sign up now to showcase your skills, test your knowledge, and compete for exciting rewards. Don't miss your chance to become a part of the ultimate intellectual showdown."

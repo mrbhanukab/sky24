@@ -9,8 +9,8 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "/register",
-        "destination": "/register.html"
+        "source": "/wtfcheck",
+        "destination": "/wtfcheck.html"
       },
       {
         "source": "/rules",
