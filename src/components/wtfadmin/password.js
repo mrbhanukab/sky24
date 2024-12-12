@@ -1,37 +1,20 @@
 import { useState } from "react";
 import styles from "@/styles/wtfadmin.module.css";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/components/firebase";
-import md5 from "md5";
 
 const Password = ({ func }) => {
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    try {
-      const docRef = doc(db, "system", "wtfadmin");
-      const docSnap = await getDoc(docRef);
+    const adminPassword = "password-admin";
+    const viewerPassword = "password-viewer";
 
-      if (docSnap.exists()) {
-        const { admin, viewer, check } = docSnap.data();
-        const inputHash = md5(password);
-
-        if (inputHash === admin) {
-          func("admin");
-        } else if (inputHash === viewer) {
-          func("viewer");
-        } else if (inputHash === check) {
-          func("check");
-        } else {
-          func("error");
-        }
-      } else {
-        func("error");
-      }
-    } catch (error) {
-      alert("Error getting document. Slow Internet?");
+    if (password === adminPassword) {
+      func("admin");
+    } else if (password === viewerPassword) {
+      func("viewer");
+    } else {
       func("error");
     }
   };

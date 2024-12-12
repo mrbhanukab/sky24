@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { doc, getDoc, collection, getDocs, setDoc } from "firebase/firestore";
-import { db } from "@/components/firebase";
 import dynamic from "next/dynamic";
 import styles from "@/styles/wtfadmin.module.css";
 import Loading from "@/components/Loading";
@@ -18,7 +16,10 @@ export default function Admin() {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedResult, setSelectedResult] = useState(null);
-  const [selectedStatus, setSelectedStatus] = useState(2);
+  const [selectedStatus, setSelectedStatus] = useState(() => {
+    const savedStatus = sessionStorage.getItem("status");
+    return savedStatus ? parseInt(savedStatus) : 2;
+  });
   const [adsData, setAdsData] = useState(null);
   const [data, setData] = useState({
     schoolsData: [],
@@ -41,27 +42,32 @@ export default function Admin() {
   });
 
   useEffect(() => {
-    const fetchDataFromFirestore = async () => {
+    const fetchDataFromJson = async () => {
       try {
-        // Fetch status data
-        const statusDocRef = doc(db, "system", "settings");
-        const statusDocSnap = await getDoc(statusDocRef);
-
-        if (statusDocSnap.exists()) {
-          const statusData = statusDocSnap.data();
-          setData((prevData) => ({ ...prevData, status: statusData.status }));
-        }
-
-        // Fetch teams data
-        const teamsQuerySnapshot = await getDocs(collection(db, "teams"));
-        const numTeams = teamsQuerySnapshot.size;
+        const response = await fetch("/teams.json");
+        const jsonData = await response.json();
+        const teams = Object.values(jsonData); // Convert the object to an array
+        const numTeams = teams.length;
         setData((prevData) => ({ ...prevData, teamsCount: numTeams }));
 
-        // Extract unique schools data
         const uniqueSchools = new Set();
         const schools = [];
-        teamsQuerySnapshot.forEach((doc) => {
-          const formData = doc.data().formData;
+        const members = [];
+        const languageCountsObj = {
+          sinhala: 0,
+          english: 0,
+          tamil: 0,
+          multilingual: 0,
+        };
+        const centerCountsObj = {
+          anuradhapura: 0,
+          kandy: 0,
+          colombo: 0,
+          matara: 0,
+        };
+
+        teams.forEach((team) => {
+          const formData = team.formData;
           if (formData && formData.schoolName) {
             const schoolName = formData.schoolName;
             if (!uniqueSchools.has(schoolName)) {
@@ -78,42 +84,18 @@ export default function Admin() {
               schools.push(schoolData);
             }
           }
-        });
-        setData((prevData) => ({
-          ...prevData,
-          schoolsCount: uniqueSchools.size,
-          schoolsData: schools,
-        }));
 
-        // Extract members data
-        const members = [];
-        const languageCountsObj = {
-          sinhala: 0,
-          english: 0,
-          tamil: 0,
-          multilingual: 0,
-        };
-        const centerCountsObj = {
-          anuradhapura: 0,
-          kandy: 0,
-          colombo: 0,
-          matara: 0,
-        };
-
-        teamsQuerySnapshot.forEach((doc) => {
-          const formData = doc.data().formData;
-          const membersArray = doc.data().members;
-
+          const membersArray = team.members;
           let memberData = {
             school: formData.schoolName,
             language: formData.language,
-            selected: doc.data().selected || null,
-            final: doc.data().final || null,
-            firstround: doc.data().firstround || null,
-            finalround: doc.data().finalround || null,
+            selected: team.selected || null,
+            final: team.final || null,
+            firstround: team.firstround || null,
+            finalround: team.finalround || null,
           };
-          memberData.team = doc.data().selectedTeam;
-          memberData.location = doc.data().selectedCenter;
+          memberData.team = team.selectedTeam;
+          memberData.location = team.selectedCenter;
 
           membersArray.forEach((member, index) => {
             memberData[
@@ -121,7 +103,7 @@ export default function Admin() {
             ] = `${member.name} (${member.whatsappNumber})`;
 
             languageCountsObj[formData.language]++;
-            centerCountsObj[doc.data().selectedCenter]++;
+            centerCountsObj[team.selectedCenter]++;
           });
 
           members.push(memberData);
@@ -129,21 +111,14 @@ export default function Admin() {
 
         setData((prevData) => ({
           ...prevData,
+          schoolsCount: uniqueSchools.size,
+          schoolsData: schools,
           membersData: members,
           languageCounts: languageCountsObj,
           centerCounts: centerCountsObj,
         }));
-
-        // Fetch ads data
-        const adsDocRef = doc(db, "system", "Ads"); // Assuming "Ads" document exists in the "system" collection
-        const adsDocSnap = await getDoc(adsDocRef);
-
-        if (adsDocSnap.exists()) {
-          const adsData = adsDocSnap.data();
-          setAdsData(adsData); // Assuming you have a useState for ads data
-        }
       } catch (error) {
-        alert("Error fetching data from Firestore. Slow Internet?");
+        alert("Error fetching data from JSON file.");
       } finally {
         setTimeout(() => {
           setLoading(false);
@@ -151,7 +126,7 @@ export default function Admin() {
       }
     };
 
-    fetchDataFromFirestore();
+    fetchDataFromJson();
   }, []);
 
   const openSchoolModal = (schoolName) => {
@@ -174,30 +149,12 @@ export default function Admin() {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleSubmit = async () => {
-    const statusInt = parseInt(selectedStatus);
-
-    if (isNaN(statusInt)) {
-      alert("Status must be a valid integer.");
-      return;
-    }
-
-    try {
-      await setDoc(doc(db, "system", "settings"), { status: statusInt });
-
-      const statusDocRef = doc(db, "system", "settings");
-      const statusDocSnap = await getDoc(statusDocRef);
-
-      if (statusDocSnap.exists()) {
-        const statusData = statusDocSnap.data();
-        setData((prevData) => ({
-          ...prevData,
-          status: statusData.status,
-        }));
-      }
-    } catch (error) {
-      alert("Error updating status!");
-    }
+  const handleSubmit = () => {
+    sessionStorage.setItem("status", selectedStatus);
+    setData((prevData) => ({
+      ...prevData,
+      status: selectedStatus,
+    }));
   };
 
   const handleToggleResult = (resultType) => {
@@ -206,16 +163,8 @@ export default function Admin() {
 
   const handleAdSubmit = async (updatedData) => {
     // Update state with new data
-
-    // Update data in the database
-    try {
-      setAdsData(updatedData);
-      const adsDocRef = doc(db, "system", "Ads");
-      await setDoc(adsDocRef, updatedData);
-      alert("Ads data updated successfully in the database.");
-    } catch (error) {
-      alert("Error updating ads data in the database. Slow Internet?");
-    }
+    setAdsData(updatedData);
+    alert("Ads data updated successfully.");
   };
 
   const memoizedMembersData = useMemo(

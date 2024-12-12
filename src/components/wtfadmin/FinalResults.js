@@ -1,14 +1,5 @@
 import React, { useState } from "react";
 import styles from "@/styles/wtfadmin.module.css";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  updateDoc,
-  doc,
-} from "firebase/firestore";
-import { db } from "@/components/firebase";
 
 const FinalResults = ({ onClose, data }) => {
   const [updatedData, setUpdatedData] = useState(data);
@@ -17,57 +8,26 @@ const FinalResults = ({ onClose, data }) => {
     const updatedSchools = [...updatedData.membersData];
 
     if (field === "final") {
-      // Parse the input value as an integer
       const finalValue = parseInt(e.target.value);
-      // Update the final property
       updatedSchools[schoolIndex].final = isNaN(finalValue) ? 0 : finalValue;
     } else {
-      // Check if finalround is null and initialize it if necessary
       if (!updatedSchools[schoolIndex].finalround) {
         updatedSchools[schoolIndex].finalround = {};
       }
-      // Update the value of the specified field
       updatedSchools[schoolIndex].finalround[field] = e.target.value;
     }
 
-    // Update the state with the modified data
     setUpdatedData({ ...updatedData, membersData: updatedSchools });
   };
 
-  // Function to handle form submission
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     let confirmation = prompt(
       "Changes Maybe Unrecoverable, Please Make Sure you Don't Fucked up!  Type 'Submit The Shit' to Submit Data."
     );
 
     if (confirmation === "Submit The Shit") {
-      try {
-        const teamsRef = collection(db, "teams");
-
-        for (const school of updatedData.membersData) {
-          const q = query(
-            teamsRef,
-            where("formData.schoolName", "==", school.school),
-            where("selectedTeam", "==", school.team)
-          );
-
-          const querySnapshot = await getDocs(q);
-
-          if (!querySnapshot.empty) {
-            const docId = querySnapshot.docs[0].id;
-            await updateDoc(doc(teamsRef, docId), {
-              final: school.final,
-              finalround: school.finalround,
-            });
-          }
-        }
-
-        alert("Data updated successfully!");
-        location.reload();
-        onClose(); // Close the modal or perform any other actions
-      } catch (error) {
-        alert("Error updating data. Please try again later.");
-      }
+      alert("done");
+      onClose();
     }
   };
 
@@ -89,8 +49,8 @@ const FinalResults = ({ onClose, data }) => {
         </thead>
         <tbody>
           {updatedData.membersData
-            .slice() // Create a copy of the array
-            .sort((a, b) => a.school.localeCompare(b.school)) // Sort the array alphabetically based on school name
+            .slice()
+            .sort((a, b) => a.school.localeCompare(b.school))
             .map((school, index) => (
               <tr key={index}>
                 <td>{school.school}</td>

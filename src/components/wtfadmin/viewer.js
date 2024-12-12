@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { doc, getDoc, collection, getDocs, setDoc } from "firebase/firestore";
-import { db } from "@/components/firebase";
 import dynamic from "next/dynamic";
 import styles from "@/styles/wtfadmin.module.css";
 import Loading from "@/components/Loading";
@@ -33,23 +31,32 @@ export default function Viewer() {
   });
 
   useEffect(() => {
-    const fetchDataFromFirestore = async () => {
+    const fetchDataFromJson = async () => {
       try {
-        const statusDocRef = doc(db, "system", "settings");
-        const statusDocSnap = await getDoc(statusDocRef);
-        if (statusDocSnap.exists()) {
-          const statusData = statusDocSnap.data();
-          setData((prevData) => ({ ...prevData, status: statusData.status }));
-        }
-
-        const teamsQuerySnapshot = await getDocs(collection(db, "teams"));
-        const numTeams = teamsQuerySnapshot.size;
+        const response = await fetch("/teams.json");
+        const jsonData = await response.json();
+        const teams = Object.values(jsonData); // Convert the object to an array
+        const numTeams = teams.length;
         setData((prevData) => ({ ...prevData, teamsCount: numTeams }));
 
         const uniqueSchools = new Set();
         const schools = [];
-        teamsQuerySnapshot.forEach((doc) => {
-          const formData = doc.data().formData;
+        const members = [];
+        const languageCountsObj = {
+          sinhala: 0,
+          english: 0,
+          tamil: 0,
+          multilingual: 0,
+        };
+        const centerCountsObj = {
+          anuradhapura: 0,
+          kandy: 0,
+          colombo: 0,
+          matara: 0,
+        };
+
+        teams.forEach((team) => {
+          const formData = team.formData;
           if (formData && formData.schoolName) {
             const schoolName = formData.schoolName;
             if (!uniqueSchools.has(schoolName)) {
@@ -66,37 +73,18 @@ export default function Viewer() {
               schools.push(schoolData);
             }
           }
-        });
-        setData((prevData) => ({
-          ...prevData,
-          schoolsCount: uniqueSchools.size,
-          schoolsData: schools,
-        }));
 
-        const members = [];
-        const languageCountsObj = {
-          sinhala: 0,
-          english: 0,
-          tamil: 0,
-          multilingual: 0,
-        };
-        const centerCountsObj = {
-          anuradhapura: 0,
-          kandy: 0,
-          colombo: 0,
-          matara: 0,
-        };
-
-        teamsQuerySnapshot.forEach((doc) => {
-          const formData = doc.data().formData;
-          const membersArray = doc.data().members;
-
+          const membersArray = team.members;
           let memberData = {
             school: formData.schoolName,
             language: formData.language,
+            selected: team.selected || null,
+            final: team.final || null,
+            firstround: team.firstround || null,
+            finalround: team.finalround || null,
           };
-          memberData.team = doc.data().selectedTeam;
-          memberData.location = doc.data().selectedCenter;
+          memberData.team = team.selectedTeam;
+          memberData.location = team.selectedCenter;
 
           membersArray.forEach((member, index) => {
             memberData[
@@ -104,7 +92,7 @@ export default function Viewer() {
             ] = `${member.name} (${member.whatsappNumber})`;
 
             languageCountsObj[formData.language]++;
-            centerCountsObj[doc.data().selectedCenter]++;
+            centerCountsObj[team.selectedCenter]++;
           });
 
           members.push(memberData);
@@ -112,12 +100,14 @@ export default function Viewer() {
 
         setData((prevData) => ({
           ...prevData,
+          schoolsCount: uniqueSchools.size,
+          schoolsData: schools,
           membersData: members,
           languageCounts: languageCountsObj,
           centerCounts: centerCountsObj,
         }));
       } catch (error) {
-        alert("Error fetching data from Firestore. Slow Internet?");
+        alert("Error fetching data from JSON file.");
       } finally {
         setTimeout(() => {
           setLoading(false);
@@ -125,7 +115,7 @@ export default function Viewer() {
       }
     };
 
-    fetchDataFromFirestore();
+    fetchDataFromJson();
   }, []);
 
   const openSchoolModal = (schoolName) => {

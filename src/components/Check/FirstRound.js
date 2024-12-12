@@ -1,20 +1,9 @@
 import React, { useState, useEffect, useMemo } from "react";
-import {
-  doc,
-  getDoc,
-  collection,
-  getDocs,
-  query,
-  where,
-  updateDoc,
-} from "firebase/firestore";
-import { db } from "@/components/firebase";
 import dynamic from "next/dynamic";
 import styles from "@/styles/wtfadmin.module.css";
 import Loading from "@/components/Loading";
 
 const Modal = dynamic(() => import("@/components/wtfadmin/modal"));
-const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function FirstRound({ examCenter }) {
   const [loading, setLoading] = useState(true);
@@ -40,28 +29,35 @@ export default function FirstRound({ examCenter }) {
   });
 
   useEffect(() => {
-    const fetchDataFromFirestore = async () => {
+    const fetchDataFromJson = async () => {
       try {
-        const statusDocRef = doc(db, "system", "settings");
-        const statusDocSnap = await getDoc(statusDocRef);
-        if (statusDocSnap.exists()) {
-          const statusData = statusDocSnap.data();
-          setData((prevData) => ({ ...prevData, status: statusData.status }));
-        }
-
-        const teamsQuerySnapshot = await getDocs(collection(db, "teams"));
-        const numTeamsInCenter = teamsQuerySnapshot.docs.filter(
-          (doc) => doc.data().selectedCenter === examCenter
+        const response = await fetch("/teams.json");
+        const jsonData = await response.json();
+        const teams = Object.values(jsonData); // Convert the object to an array
+        const numTeamsInCenter = teams.filter(
+          (team) => team.selectedCenter === examCenter
         ).length;
         setData((prevData) => ({ ...prevData, teamsCount: numTeamsInCenter }));
 
         const uniqueSchools = new Set();
         const schools = [];
-        teamsQuerySnapshot.forEach((doc) => {
-          const formData = doc.data().formData;
+        const members = [];
+        const languageCountsObj = {
+          sinhala: 0,
+          english: 0,
+          tamil: 0,
+          multilingual: 0,
+        };
+        const centerCountsObj = {
+          [examCenter]: 0,
+        };
+        let checkedTeamsCount = 0;
+
+        teams.forEach((team) => {
+          const formData = team.formData;
           if (formData && formData.schoolName) {
             const schoolName = formData.schoolName;
-            if (doc.data().selectedCenter === examCenter) {
+            if (team.selectedCenter === examCenter) {
               if (!uniqueSchools.has(schoolName)) {
                 uniqueSchools.add(schoolName);
                 const schoolData = {
@@ -77,35 +73,14 @@ export default function FirstRound({ examCenter }) {
               }
             }
           }
-        });
-        setData((prevData) => ({
-          ...prevData,
-          schoolsCount: uniqueSchools.size,
-          schoolsData: schools,
-        }));
 
-        const members = [];
-        const languageCountsObj = {
-          sinhala: 0,
-          english: 0,
-          tamil: 0,
-          multilingual: 0,
-        };
-        const centerCountsObj = {
-          [examCenter]: 0,
-        };
-        let checkedTeamsCount = 0;
-
-        teamsQuerySnapshot.forEach((doc) => {
-          const formData = doc.data().formData;
-          const membersArray = doc.data().members;
-
+          const membersArray = team.members;
           let memberData = {
             school: formData.schoolName,
             language: formData.language,
           };
-          memberData.team = doc.data().selectedTeam;
-          memberData.location = doc.data().selectedCenter;
+          memberData.team = team.selectedTeam;
+          memberData.location = team.selectedCenter;
 
           if (memberData.location === examCenter) {
             membersArray.forEach((member, index) => {
@@ -117,7 +92,7 @@ export default function FirstRound({ examCenter }) {
               centerCountsObj[examCenter]++;
             });
 
-            if (doc.data().firstCheck === true) {
+            if (team.firstCheck === true) {
               memberData.firstCheck = "checked";
               checkedTeamsCount++;
             } else {
@@ -130,19 +105,21 @@ export default function FirstRound({ examCenter }) {
 
         setData((prevData) => ({
           ...prevData,
+          schoolsCount: uniqueSchools.size,
+          schoolsData: schools,
           membersData: members,
           languageCounts: languageCountsObj,
           centerCounts: centerCountsObj,
           checkedTeamsCount: checkedTeamsCount,
         }));
       } catch (error) {
-        alert("Error fetching data from Firestore. Slow Internet?");
+        alert("Error fetching data from JSON file.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchDataFromFirestore();
+    fetchDataFromJson();
   }, [examCenter]);
 
   const openSchoolModal = (schoolName) => {
@@ -176,141 +153,21 @@ export default function FirstRound({ examCenter }) {
     [data.membersData]
   );
 
-  const handleSubmitCheck = async (data) => {
-    try {
-      const teamsRef = collection(db, "teams");
-      const q = query(
-        teamsRef,
-        where("formData.schoolName", "==", data.school),
-        where("selectedTeam", "==", data.team)
-      );
-      const querySnapshot = await getDocs(q);
-
-      if (!querySnapshot.empty) {
-        const docId = querySnapshot.docs[0].id;
-        await updateDoc(doc(teamsRef, docId), {
-          firstCheck: true,
-        });
-
-        const fetchDataFromFirestore = async () => {
-          try {
-            const statusDocRef = doc(db, "system", "settings");
-            const statusDocSnap = await getDoc(statusDocRef);
-            if (statusDocSnap.exists()) {
-              const statusData = statusDocSnap.data();
-              setData((prevData) => ({
-                ...prevData,
-                status: statusData.status,
-              }));
-            }
-
-            const teamsQuerySnapshot = await getDocs(collection(db, "teams"));
-            const numTeamsInCenter = teamsQuerySnapshot.docs.filter(
-              (doc) => doc.data().selectedCenter === examCenter
-            ).length;
-            setData((prevData) => ({
-              ...prevData,
-              teamsCount: numTeamsInCenter,
-            }));
-
-            const uniqueSchools = new Set();
-            const schools = [];
-            teamsQuerySnapshot.forEach((doc) => {
-              const formData = doc.data().formData;
-              if (formData && formData.schoolName) {
-                const schoolName = formData.schoolName;
-                if (doc.data().selectedCenter === examCenter) {
-                  if (!uniqueSchools.has(schoolName)) {
-                    uniqueSchools.add(schoolName);
-                    const schoolData = {
-                      schoolName: schoolName,
-                      schoolAddress: formData.schoolAddress,
-                      email: formData.societyEmail,
-                      teacherInCharge: formData.teacherInCharge,
-                      ticContact: formData.ticContactNumber,
-                      president: formData.presidentName,
-                      presidentContact: formData.presidentContactNumber,
-                    };
-                    schools.push(schoolData);
-                  }
-                }
-              }
-            });
-            setData((prevData) => ({
-              ...prevData,
-              schoolsCount: uniqueSchools.size,
-              schoolsData: schools,
-            }));
-
-            const members = [];
-            const languageCountsObj = {
-              sinhala: 0,
-              english: 0,
-              tamil: 0,
-              multilingual: 0,
-            };
-            const centerCountsObj = {
-              [examCenter]: 0,
-            };
-            let checkedTeamsCount = 0;
-
-            teamsQuerySnapshot.forEach((doc) => {
-              const formData = doc.data().formData;
-              const membersArray = doc.data().members;
-
-              let memberData = {
-                school: formData.schoolName,
-                language: formData.language,
-              };
-              memberData.team = doc.data().selectedTeam;
-              memberData.location = doc.data().selectedCenter;
-
-              if (memberData.location === examCenter) {
-                membersArray.forEach((member, index) => {
-                  memberData[
-                    `member${index + 1}`
-                  ] = `${member.name} (${member.whatsappNumber})`;
-
-                  languageCountsObj[formData.language]++;
-                  centerCountsObj[examCenter]++;
-                });
-
-                if (doc.data().firstCheck === true) {
-                  memberData.firstCheck = "checked";
-                  checkedTeamsCount++;
-                } else {
-                  memberData.firstCheck = "not checked";
-                }
-
-                members.push(memberData);
-              }
-            });
-
-            setData((prevData) => ({
-              ...prevData,
-              membersData: members,
-              languageCounts: languageCountsObj,
-              centerCounts: centerCountsObj,
-              checkedTeamsCount: checkedTeamsCount,
-            }));
-          } catch (error) {
-            alert("Error fetching data from Firestore. Slow Internet?");
-          } finally {
-            setLoading(false);
-          }
-        };
-
-        fetchDataFromFirestore();
-
-        // Close the check modal
-        closeCheckModal();
-      } else {
-        console.error("Document not found for school and team ID:", data);
+  const handleSubmitCheck = (data) => {
+    const updatedMembersData = memoizedMembersData.map((member) => {
+      if (member.school === data.school && member.team === data.team) {
+        return { ...member, firstCheck: "checked" };
       }
-    } catch (error) {
-      console.error("Error updating database:", error);
-      // Handle error as needed
-    }
+      return member;
+    });
+
+    setData((prevData) => ({
+      ...prevData,
+      membersData: updatedMembersData,
+      checkedTeamsCount: prevData.checkedTeamsCount + 1,
+    }));
+
+    closeCheckModal();
   };
 
   return (
@@ -342,7 +199,7 @@ export default function FirstRound({ examCenter }) {
               data={checkModalData}
               type="check"
               onClose={closeCheckModal}
-              onSubmitCheck={() => handleSubmitCheck(checkModalData)} // Pass a function
+              onSubmitCheck={() => handleSubmitCheck(checkModalData)}
             />
           )}
 

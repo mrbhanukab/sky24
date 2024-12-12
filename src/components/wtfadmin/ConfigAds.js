@@ -1,12 +1,22 @@
 // ConfigAds.js
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Styles from "@/styles/Ads.module.css";
 
 export default function ConfigAds(props) {
-  const [mainVideoId, setMainVideoId] = useState(props.adsData.Main);
-  const [othersVideoIds, setOthersVideoIds] = useState(props.adsData.Others);
-  const [display, setDisplay] = useState(props.adsData.display);
+  const [mainVideoId, setMainVideoId] = useState("");
+  const [othersVideoIds, setOthersVideoIds] = useState({});
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    const storedAdsData = sessionStorage.getItem("adsData");
+    if (storedAdsData) {
+      const adsData = JSON.parse(storedAdsData);
+      setMainVideoId(adsData.Main);
+      setOthersVideoIds(adsData.Others);
+      setDisplay(adsData.display);
+    }
+  }, []);
 
   const handleMainVideoIdChange = (event) => {
     setMainVideoId(event.target.value);
@@ -24,13 +34,13 @@ export default function ConfigAds(props) {
   };
 
   const handleSubmit = () => {
-    // Submit the updated data
     const updatedData = {
       Main: mainVideoId,
       display: display,
       Others: othersVideoIds,
     };
-    props.onSubmit(updatedData); // Call parent function to submit data
+    sessionStorage.setItem("adsData", JSON.stringify(updatedData));
+    props.onSubmit(updatedData);
   };
 
   return (

@@ -1,7 +1,25 @@
+import React, { useEffect, useState } from "react";
 import Styles from "@/styles/Ads.module.css";
 
-export default function Ads(props) {
-  const { Main, Others } = props.adsData;
+export default function Ads() {
+  const [adsData, setAdsData] = useState({
+    Main: "",
+    Others: {},
+    display: false,
+  });
+
+  useEffect(() => {
+    const storedAdsData = sessionStorage.getItem("adsData");
+    if (storedAdsData) {
+      setAdsData(JSON.parse(storedAdsData));
+    }
+  }, []);
+
+  if (!adsData.display) {
+    return null;
+  }
+
+  const { Main, Others } = adsData;
 
   return (
     <section className={Styles.mainContainer}>
@@ -22,7 +40,7 @@ export default function Ads(props) {
         <div className={Styles.MainSponsorIframe}>
           <iframe
             src={`https://www.youtube.com/embed/${Main}?autoplay=1&loop=1&rel=0&fs=0&controls=0&playlist=${Main}`}
-            frameborder="0"
+            frameBorder="0"
           />
           <h5>Main Sponsor</h5>
         </div>
@@ -33,7 +51,7 @@ export default function Ads(props) {
             <h5>{sponsorType} Sponsor</h5>
             <iframe
               src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&modestbranding=1&rel=0&fs=0&controls=0&playlist=${videoId}`}
-              frameborder="0"
+              frameBorder="0"
             ></iframe>
           </div>
         ))}

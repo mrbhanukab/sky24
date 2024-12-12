@@ -1,14 +1,5 @@
 import React, { useState } from "react";
 import styles from "@/styles/register.module.css";
-import {
-  doc,
-  setDoc,
-  collection,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
-import { db } from "@/components/firebase";
 import Loading from "../Loading";
 
 const Step4 = (props) => {
@@ -26,24 +17,12 @@ const Step4 = (props) => {
   );
   const [already, setAlready] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const handleSubmit = async (e) => {
+
+  const handleSubmit = (e) => {
     setSubmitting(true);
     e.preventDefault();
-    try {
-      const teamsRef = collection(db, "teams");
-      const q = query(
-        teamsRef,
-        where("formData.schoolName", "==", formData.schoolName),
-        where("selectedTeam", "==", selectedTeam)
-      );
-      const querySnapshot = await getDocs(q);
 
-      if (!querySnapshot.empty) {
-        setSubmitting(false);
-        setAlready(true);
-        return;
-      }
-
+    setTimeout(() => {
       const teamId = formData.schoolName + " Team " + selectedTeam;
       const formDataObject = {
         formData: formData,
@@ -51,12 +30,10 @@ const Step4 = (props) => {
         members: members,
         selectedCenter: selectedCenter,
       };
-      await setDoc(doc(teamsRef, teamId), formDataObject);
-    } catch (error) {
-      alert("Error adding document!");
-    }
-    sessionStorage.clear();
-    props.func(5);
+
+      sessionStorage.clear();
+      props.func(5);
+    }, 3000);
   };
 
   const handleInputChange = (e, index) => {

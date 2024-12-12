@@ -5,8 +5,6 @@ import Loading from "@/components/Loading";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import styles from "@/styles/index.module.css";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/components/firebase";
 
 const Section2 = dynamic(() => import("@/components/index/Section2"));
 const Ads = dynamic(() => import("@/components/Ads"));
@@ -18,22 +16,19 @@ export default function Home() {
     SkyLogo: null,
   });
   const [loading, setLoading] = useState(1);
-  const [adsData, setAdsData] = useState(null);
+  const [adsData, setAdsData] = useState({
+    Main: "YVI6SCtVu4c",
+    Others: {
+      Bronze: "nIwdhPOVOUk",
+      "Food & Beverage": "vQ-Eam9IZJY",
+      Gold: "1r82NBk3aKM",
+      Platinum: "gbN1eXFskYU",
+      Silver: "PmtFtWVrxFE",
+    },
+    display: true,
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const adsDocRef = doc(db, "system", "Ads");
-        const adsDocSnap = await getDoc(adsDocRef);
-        if (adsDocSnap.exists()) {
-          const data = adsDocSnap.data();
-          setAdsData(data);
-        }
-      } catch (error) {
-        alert("Error fetching data. Slow Internet?");
-      }
-    };
-
     const fetchAndStoreImage = async (imageUrl, sessionStorageKey) => {
       try {
         const response = await fetch(imageUrl);
@@ -54,7 +49,6 @@ export default function Home() {
     fetchAndStoreImage("assets/Particals.webp", "Particals");
     fetchAndStoreImage("assets/School-Logo.webp", "SchoolLogo");
     fetchAndStoreImage("assets/Sky%20Logo.webp", "SkyLogo");
-    fetchData();
     setLoading(2);
     setTimeout(() => {
       setLoading(3);

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styles from "@/styles/index.module.css";
 import ProgressBar from "./Section2/ProgressBar";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/components/firebase";
 
 const LazyOpen = dynamic(() => import("./Section2/Open"));
 const LazyClose = dynamic(() => import("./Section2/Close"));
@@ -13,26 +11,41 @@ const LazyFirstFinish = dynamic(() => import("./Section2/FirstFinish"));
 const LazyFinalFinish = dynamic(() => import("./Section2/FinalFinish"));
 
 export default function Section2() {
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState(() => {
+    return parseInt(sessionStorage.getItem("status")) || 7;
+  });
 
   useEffect(() => {
-    const getStatusFromFirestore = async () => {
-      try {
-        const docRef = doc(db, "system", "settings");
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setStatus(data.status);
-        }
-      } catch (error) {
-        alert("Error getting document. Slow Internet?");
-      }
+    const handleStorageChange = () => {
+      const newStatus = parseInt(sessionStorage.getItem("status")) || 7;
+      setStatus(newStatus);
     };
 
-    getStatusFromFirestore();
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
-  const renderComponent = (component) => {
+  useEffect(() => {
+    const handleSectionPress = () => {
+      setStatus((prevStatus) => {
+        const newStatus = prevStatus >= 8 ? 2 : prevStatus + 1;
+        sessionStorage.setItem("status", newStatus);
+        return newStatus;
+      });
+    };
+
+    const section = document.querySelector(`.${styles.section2}`);
+    section.addEventListener("click", handleSectionPress);
+
+    return () => {
+      section.removeEventListener("click", handleSectionPress);
+    };
+  }, []);
+
+  const renderComponent = () => {
     switch (status) {
       case 2:
         return <LazyOpen />;

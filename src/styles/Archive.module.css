@@ -1,0 +1,20 @@
+.card{
+    z-index: 9999;
+    position: fixed;
+    cursor: pointer;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    padding: 1rem;
+    background: rgba( 0, 0, 0, 0.65 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 16.5px );
+    -webkit-backdrop-filter: blur( 16.5px );
+    border-radius: 10px;
+}
+
+.card h1{
+    color: yellow;
+    font-size: 1rem;
+    text-decoration: underline;
+}

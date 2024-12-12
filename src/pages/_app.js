@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
 import { useEffect } from "react";
+import Archive from "@/components/Archive";
 
 const mollen = localFont({
   src: [
@@ -47,6 +48,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <main className={mollen.className}>
+        <Archive />
         <Component {...pageProps} />
       </main>
     </>

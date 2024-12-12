@@ -14,7 +14,7 @@ const Step5 = () => {
       </p>
       <Link
         className={styles.btn}
-        href="https://whatsapp.com/channel/0029VaNp7ThEquiYG2J5dX2l"
+        href="https://www.youtube.com/@isipathana-astro"
       >
         Follow Our WhatsApp Channel
       </Link>
@@ -25,16 +25,16 @@ const Step5 = () => {
         we're here to assist you every step of the way. Reach out to us without
         delay, and we'll ensure your cosmic journey continues seamlessly!
       </p>
-      <Link className={styles.btn} href="https://wa.me/94706162457">
+      <Link className={styles.btn} href="https://www.youtube.com/@isipathana-astro">
         Ginura Buddila(President)
       </Link>
-      <Link className={styles.btn} href="https://wa.me/94714558808">
+      <Link className={styles.btn} href="https://www.youtube.com/@isipathana-astro">
         Suyama Janidu
       </Link>
-      <Link className={styles.btn} href="https://wa.me/94702439643">
+      <Link className={styles.btn} href="https://www.youtube.com/@isipathana-astro">
         Sethum Hansana
       </Link>
-      <Link className={styles.btn} href="https://wa.me/94710362934">
+      <Link className={styles.btn} href="https://www.youtube.com/@isipathana-astro">
         Vimeth Damhiru
       </Link>
     </section>
