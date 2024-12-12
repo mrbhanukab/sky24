@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/index.module.css";
-import { collection, doc, getDoc } from "firebase/firestore";
-import { db } from "@/components/firebase";
 
 export default function First() {
   const [schools, setSchools] = useState(0);
@@ -11,18 +9,17 @@ export default function First() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const docRef = doc(db, "system", "first");
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setSchools(data.school || 0);
-          setTeams(data.teams || 0);
-          setParticipants(data.participants || 0);
-        } else {
-          console.log("No such document!");
-        }
+        // Replace this with your JSON data
+        const data = {
+          school: 10,
+          teams: 50,
+          participants: 200,
+        };
+        setSchools(data.school || 0);
+        setTeams(data.teams || 0);
+        setParticipants(data.participants || 0);
       } catch (error) {
-        console.error("Error getting document:", error);
+        console.error("Error getting data:", error);
       }
     };
 

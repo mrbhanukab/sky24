@@ -1,7 +1,5 @@
 import { useState } from "react";
 import styles from "@/styles/round.module.css";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "@/components/firebase";
 
 export default function FirstRound({ teams }) {
   const [presidentContactNumber, setPresidentContactNumber] = useState("");
@@ -12,17 +10,17 @@ export default function FirstRound({ teams }) {
     e.preventDefault();
 
     try {
-      const teamsRef = collection(db, "teams");
-      const q = query(
-        teamsRef,
-        where("formData.presidentContactNumber", "==", presidentContactNumber),
-        where("selectedTeam", "==", selectedTeam)
-      );
-      const querySnapshot = await getDocs(q);
+      const response = await fetch("/path/to/teams.json");
+      const teams = await response.json();
 
-      if (!querySnapshot.empty) {
-        const teamDoc = querySnapshot.docs[0].data();
-        const firstroundMarks = teamDoc.firstround || {};
+      const team = teams.find(
+        (team) =>
+          team.formData.presidentContactNumber === presidentContactNumber &&
+          team.selectedTeam === selectedTeam
+      );
+
+      if (team) {
+        const firstroundMarks = team.firstround || {};
         setFirstRoundMarks(Object.entries(firstroundMarks));
       } else {
         alert("No matching record found!");
