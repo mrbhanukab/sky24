@@ -11,10 +11,22 @@
     backdrop-filter: blur( 16.5px );
     -webkit-backdrop-filter: blur( 16.5px );
     border-radius: 10px;
+    width: 15vw;
 }
 
 .card h1{
     color: yellow;
     font-size: 1rem;
     text-decoration: underline;
+}
+
+.card p {
+    color: white;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 45vw;
+  }
 }

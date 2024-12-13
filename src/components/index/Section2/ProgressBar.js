@@ -1,7 +1,7 @@
+import { useEffect } from "react";
 import styles from "@/styles/index.module.css";
 
-export default function ProgressBar(props) {
-  // Function to generate events array based on props.status
+export default function ProgressBar({ status, setStatus }) {
   const generateEvents = (status) => {
     switch (status) {
       case 2:
@@ -70,7 +70,6 @@ export default function ProgressBar(props) {
           { event: "FINAL ROUND", status: 2 },
           { event: "RELEASE FINAL ROUND RESULTS", status: 1 },
         ];
-      // Add cases for other statuses as needed
       default:
         return [
           { event: "REGISTRATION WILL OPEN SOON", status: 0 },
@@ -85,29 +84,39 @@ export default function ProgressBar(props) {
     }
   };
 
-  // Generate events array based on props.status
-  const events = generateEvents(props.status);
+  const events = generateEvents(status);
 
-  // Mapping events to JSX
-  const progress = events.map(
-    (
-      item,
-      index // Added 'index' parameter
-    ) => (
-      <li
-        key={index} // Added key prop with unique identifier
-        className={
-          item.status === 1
-            ? `${styles.iscomplete} ${styles.ishovered}`
-            : item.status === 2
-            ? styles.iscomplete
-            : ""
-        }
-      >
-        <span>{item.event}</span>
-      </li>
-    )
-  );
+  useEffect(() => {
+    const handleLiClick = (index) => {
+      if (!(index===0 || index===1)) setStatus(index);
+    };
+
+    const listItems = document.querySelectorAll(`.${styles.progressBar} li`);
+    listItems.forEach((item, index) => {
+      item.addEventListener("click", () => handleLiClick(index));
+    });
+
+    return () => {
+      listItems.forEach((item) => {
+        item.removeEventListener("click", () => handleLiClick(index));
+      });
+    };
+  }, [status, setStatus]);
+
+  const progress = events.map((item, index) => (
+    <li
+      key={index}
+      className={
+        item.status === 1
+          ? `${styles.iscomplete} ${styles.ishovered}`
+          : item.status === 2
+          ? styles.iscomplete
+          : ""
+      }
+    >
+      <span>{item.event}</span>
+    </li>
+  ));
 
   return <ul className={styles.progressBar}>{progress}</ul>;
 }

@@ -11,7 +11,7 @@ export default function Final() {
         // Replace this with your JSON data
         const data = {
           finalist: 5,
-          total: 20,
+          total: 50,
         };
         setFinalTeams(data.finalist || 0);
         setTotalTeams(data.total || 0);

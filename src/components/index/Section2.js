@@ -28,23 +28,6 @@ export default function Section2() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleSectionPress = () => {
-      setStatus((prevStatus) => {
-        const newStatus = prevStatus >= 8 ? 2 : prevStatus + 1;
-        sessionStorage.setItem("status", newStatus);
-        return newStatus;
-      });
-    };
-
-    const section = document.querySelector(`.${styles.section2}`);
-    section.addEventListener("click", handleSectionPress);
-
-    return () => {
-      section.removeEventListener("click", handleSectionPress);
-    };
-  }, []);
-
   const renderComponent = () => {
     switch (status) {
       case 2:
@@ -67,7 +50,7 @@ export default function Section2() {
   return (
     <section className={styles.section2}>
       <div className={styles.card2}>
-        <ProgressBar status={status} />
+        <ProgressBar status={status} setStatus={setStatus} />
         <React.Suspense fallback={<div>Loading...</div>}>
           {renderComponent()}
         </React.Suspense>
