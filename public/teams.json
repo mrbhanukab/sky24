@@ -46,8 +46,8 @@
             "ticContactNumber": "0761364398"
         },
         "selectedCenter": "matara",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 1,
         "firstCheck": true,
         "finalround": null,
         "id": "School-1-Team B"
@@ -99,8 +99,8 @@
             "ticContactNumber": "0752534623"
         },
         "selectedCenter": "kandy",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 2,
         "firstCheck": true,
         "finalround": null,
         "id": "School-2-Team A"
@@ -152,8 +152,8 @@
             "ticContactNumber": "0749793263"
         },
         "selectedCenter": "matara",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 3,
         "firstCheck": true,
         "finalround": null,
         "id": "School-3-Team B"
@@ -205,8 +205,8 @@
             "ticContactNumber": "0781474772"
         },
         "selectedCenter": "anuradhapura",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 4,
         "firstCheck": true,
         "finalround": null,
         "id": "School-4-Team B"
@@ -258,8 +258,8 @@
             "ticContactNumber": "0792992843"
         },
         "selectedCenter": "matara",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 5,
         "firstCheck": true,
         "finalround": null,
         "id": "School-5-Team C"
@@ -311,8 +311,8 @@
             "ticContactNumber": "0725824208"
         },
         "selectedCenter": "colombo",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 6,
         "firstCheck": true,
         "finalround": null,
         "id": "School-6-Team B"
@@ -364,8 +364,8 @@
             "ticContactNumber": "0733967067"
         },
         "selectedCenter": "kandy",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 7,
         "firstCheck": true,
         "finalround": null,
         "id": "School-7-Team B"
@@ -417,8 +417,8 @@
             "ticContactNumber": "0716881117"
         },
         "selectedCenter": "matara",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 8,
         "firstCheck": true,
         "finalround": null,
         "id": "School-8-Team B"
@@ -470,8 +470,8 @@
             "ticContactNumber": "0737902308"
         },
         "selectedCenter": "matara",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 9,
         "firstCheck": true,
         "finalround": null,
         "id": "School-9-Team A"
@@ -523,8 +523,8 @@
             "ticContactNumber": "0794822014"
         },
         "selectedCenter": "kandy",
-        "selected": null,
-        "final": null,
+        "selected": true,
+        "final": 10,
         "firstCheck": true,
         "finalround": null,
         "id": "School-10-Team C"
@@ -576,7 +576,7 @@
             "ticContactNumber": "0720983683"
         },
         "selectedCenter": "matara",
-        "selected": null,
+        "selected": true,
         "final": null,
         "firstCheck": true,
         "finalround": null,

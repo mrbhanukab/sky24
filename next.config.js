@@ -8,8 +8,7 @@ const nextConfig = {
   },
   trailingSlash: true,
   reactStrictMode: true,
-  basePath: isProd ? '/sky24' : '',
-  assetPrefix: isProd ? '/sky24' : '',
+  basePath: '/sky24',
 };
 
 module.exports = nextConfig;

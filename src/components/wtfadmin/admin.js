@@ -44,7 +44,7 @@ export default function Admin() {
   useEffect(() => {
     const fetchDataFromJson = async () => {
       try {
-        const response = await fetch("/teams.json");
+        const response = await fetch("/sky24/teams.json");
         const jsonData = await response.json();
         const teams = Object.values(jsonData); // Convert the object to an array
         const numTeams = teams.length;

@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import Loading from "@/components/Loading";
 
 const languageFiles = {
-  1: { path: "/rules/english.md", loadingText: "Loading English Content ..." },
-  2: { path: "/rules/sinhala.md", loadingText: "Loading Sinhala Content ..." },
-  3: { path: "/rules/tamil.md", loadingText: "Loading Tamil Content ..." },
+  1: { path: "/sky24/rules/english.md", loadingText: "Loading English Content ..." },
+  2: { path: "/sky24/rules/sinhala.md", loadingText: "Loading Sinhala Content ..." },
+  3: { path: "/sky24/rules/tamil.md", loadingText: "Loading Tamil Content ..." },
 };
 
 const LanguageButtons = ({ handleLanguageChange }) => (

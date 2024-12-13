@@ -19,7 +19,7 @@ export default function Round() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/teams.json");
+        const response = await fetch("/sky24/teams.json");
         const jsonData = await response.json();
         if (id === "firstRound") {
           const selectedTeams = jsonData.filter((team) => team.selected === true);

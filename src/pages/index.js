@@ -171,7 +171,7 @@ function Section3() {
           >
             <img
               className={styles.simg}
-              src="/assets/sicons/facebook.webp"
+              src="/sky24/assets/sicons/facebook.webp"
               width={100}
               height={100}
               alt="Facebook"
@@ -184,7 +184,7 @@ function Section3() {
           >
             <img
               className={styles.simg}
-              src="/assets/sicons/instgram.webp"
+              src="/sky24/assets/sicons/instgram.webp"
               width={100}
               height={100}
               alt="Instagram"
@@ -197,7 +197,7 @@ function Section3() {
           >
             <img
               className={styles.simg}
-              src="/assets/sicons/youtube.webp"
+              src="/sky24/assets/sicons/youtube.webp"
               width={100}
               height={100}
               alt="Youtube"

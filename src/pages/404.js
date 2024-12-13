@@ -15,7 +15,7 @@ export default function Custom404() {
       setLoading(false);
     }, 800);
     setTimeout(() => {
-      window.location.replace("/");
+      window.location.replace("/sky24/");
     }, 4000);
   }, []);
 

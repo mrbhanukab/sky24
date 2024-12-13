@@ -10,7 +10,7 @@ export default function FinalRound({ finalTeams, otherTeams }) {
     e.preventDefault();
 
     try {
-      const response = await fetch("/path/to/teams.json");
+      const response = await fetch("/sky24/teams.json");
       const teams = await response.json();
 
       const team = teams.find(

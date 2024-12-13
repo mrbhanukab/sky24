@@ -14,7 +14,7 @@
   right: 0;
   bottom: 0;
   z-index: 9999;
-  background: url(/assets/Bg-Bottom.webp);
+  background: url('/sky24/assets/Bg-Bottom.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
